@@ -3,12 +3,12 @@
 @import "./assets/css/fonticons.css";
 @import "./assets/css/font-awesome.min.css";
 @import "./assets/css/bootstrap.min.css";
-// @import "./assets/css/style.css";
-// @import "./assets/css/responsive.css";
 @import "./assets/fonts/stylesheet.css";
 @import "./assets/css/magic.css";
 @import "./assets/css/stars.scss";
 @import "../node_modules/aos/dist/aos.css";
+
+
 @mixin shadow-darker($parent, $color) {
   #{$parent} {
     background-color: $color !important;
@@ -44,12 +44,6 @@
   font-size: 15px;
 }
 
-// .rh-background-1 {
-//   background-image: url(./assets/images/coding-3-flip-75a.png); // background-image: url(./assets/images/lightning-combined-high.gif);
-//   opacity: 0.8;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-// }
 .rh-background-1 {
   background-image: url(./assets/images/wopr-code-1920-1080.jpg);
   opacity: 1;
