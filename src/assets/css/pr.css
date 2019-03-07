@@ -9,22 +9,25 @@
 
 #pr1 {
   background-image: url(../images/coding-4-flip-1920-1080.png);
+  position: absolute;
   width: 1px;
   height: 1px;
   top: -9999%;
   left: -99999%;
 }
 
-#img2 {
+#pr2 {
   background-image: url(../images/wopr-code-1920-1080.jpg);
+  position: absolute;
   width: 1px;
   height: 1px;
   top: -9999%;
   left: -99999%;
 }
 
-#img3 { 
+#pr3 { 
   background-image: url(../images/blue-grid-paper-1920-1080.jpg);
+  position: absolute;
   width: 1px;
   height: 1px;
   top: -9999%;
