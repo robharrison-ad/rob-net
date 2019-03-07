@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class Error404Component implements OnInit, AfterViewInit {
 
+  sueMe;
+
   constructor(private router: Router) { }
 
   ngOnInit() {

@@ -70,7 +70,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     const vbt = y + 100;
     const wh = window.innerHeight;
     const ww = window.innerWidth;
-    if (!(btns && canvas && wrapper)) { return; }
+    if (!btns) { return; }
     if (y < 250 && btns) {
       btns.style.top = zbt + 'px';
       btns.style.left = zbl + 'px';
@@ -98,6 +98,14 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.moveButtons();
     }, 200);
+  }
+
+  goUp() {
+    window.scrollTo({
+      behavior: "smooth", 
+      left: 0,
+      top: 0
+    })
   }
 
   afterLoadComplete(pdfData: any) {

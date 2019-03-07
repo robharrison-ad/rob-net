@@ -14,6 +14,8 @@
                     <i class="fa fa-plus"></i>
                 </button>
             </div>
+
+            <!-- Vertical Zoom Buttons -->
             <div class="vert-zoom-button-container horizontal" id="vertZoomBtnHolder">
                 <table>
                     <tr>
@@ -35,6 +37,18 @@
                             <button id="btnVertZoomUp" class="zoom-button zoom-in" (click)="zoomUp(true)"
                                 [disabled]="(zoomLevel >= 3)">
                                 <i class="fa fa-plus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vertical-buttons-spacer"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td tooltip="Go to top" placement="right"> 
+                            <button id="btnGoUp" class="zoom-button go-up" (click)="goUp()">
+                                <i class="fa fa-arrow-up"></i>
                             </button>
                         </td>
                     </tr>

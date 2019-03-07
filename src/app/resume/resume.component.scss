@@ -1,5 +1,5 @@
 @import '../variables';
-
+@import '../../assets/css/font-awesome.min.css';
 .resume-page-wrapper {
   width: 100%;
 }
@@ -67,6 +67,14 @@
   }
 }
 
+.vertical-buttons-spacer {
+  height: 10px;
+  border: none;
+  margin: none;
+  padding: none;
+  background-color: #FFF;
+}
+
 #anchor {
   position: relative;
   z-index: 201;
@@ -90,7 +98,7 @@
   transition-property: opacity;
   transition-duration: 500ms;
   &:hover {
-   opacity: 1;
+    opacity: 1;
   }
   .zoom-button.zoom-out {
     border-top-right-radius: 4px;
