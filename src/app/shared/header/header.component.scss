@@ -1,0 +1,254 @@
+@import "../../variables";
+.navbar-nav {
+  font-size: 2em;
+  color: $bb-secondary;
+  text-shadow: 2px 2px 2px $bb-secondary-dark;
+  padding-right: 15px;
+  li {
+    cursor: pointer;
+  }
+}
+
+.nav_menu {
+  margin-bottom: 20px;
+}
+
+.navbar-nav.invert {
+  a {
+    color: black;
+    font-weight: bold;
+  }
+}
+
+.menu-scroll {
+  // background-color: $bb-primary;
+  background-size: contain;
+}
+
+.navbar-fixed-top {
+  position: fixed;
+  top: 0px;
+  font-family: 'latomedium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+}
+
+.main_menu_bg {
+  ul {
+    background-color: transparent;
+    li {
+      a {
+        color: $bb-secondary;
+      }
+    }
+    li:hover {
+      a {
+        color: $bb-accent-light;
+        opacity: 1;
+      }
+    }
+    li.active {
+      a {
+        background-color: transparent;
+        color: $bb-accent;
+      }
+    }
+    li:hover {
+      a {
+        background-color: transparent;
+        color: $bb-accent-light;
+      }
+    }
+  }
+}
+
+// .main_menu_bg .navbar-default .navbar-nav.active>a {
+//   color: $bb-accent !important; 
+//   text-shadow: 2px 2px 2px $bb-accent-dark;
+//   background-color: transparent;
+// }
+// .navbar-default .navbar-nav>li {
+//   backgrtound-color: green;
+//   &:hover>a {
+//     color: $bb-accent;
+//   }
+// }
+// .navbar-default .navbar-nav>.active>a {
+//   color: $bb-accent;
+//   background-color: transparent;
+//   border-bottom: 1px solid $bb-accent-alt;
+// margin-bottom: -1px;
+// padding-bottom: 33px;
+// }
+// .navbar-default .navbar-nav>.active>a:hover, 
+// .navbar-default .navbar-nav>.active>a:focus {
+//   color: $bb-accent !important;
+//   background-color: transparent;
+// }
+// .main_menu_bg .navbar-default .navbar-nav>a:hover {
+//   color: $bb-accent-alt;
+// }
+.navbar-right {
+  margin-right: 25px;
+}
+
+/******************************************************************************
+                       CUSTOMIZATION FOR RESPONSVE MENU
+*******************************************************************************/
+
+.header {
+  height: 1px;
+}
+
+@media (max-width: 767px) {
+  .navbar-header {
+    .row {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+  }
+  .navbar-fixed-top {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .navbar-collapse {
+    opacity: .3;
+    &.in {
+      opacity: .8;
+    }
+  }
+  .navbar-container.going-down {
+    width: 100vw;
+    .navbar {
+      opacity: 0.5;
+      border-bottom: none;
+      .navbar-brand {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+/******************************************************************************
+ ******************************************************************************
+
+                F I X E S   F O R   R E S P O N S I V E   M E N U
+
+ ******************************************************************************
+*******************************************************************************/
+
+.navbar-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.nav_menu {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flext;
+  display: flex !important;
+  flex-direction: row;
+}
+
+.main_menu_bg .navbar {
+  margin-bottom: 0px;
+  border-bottom: 1px solid #686868;
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  background-color: transparent;
+}
+
+.navbar-default {
+  border: none;
+}
+
+.main_menu_bg .container-fluid {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media (min-width: 768px) {
+  .navbar-container {
+    width: 100%;
+  }
+  .navbar-nav {
+    flex-direction: row !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar .container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+.container>.navbar-header,
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container-fluid>.navbar-collapse {
+  width: 100%;
+}
+
+.menu-slide-up {
+  transition-property: transform;
+  transition-duration: 750ms;
+  transform: translateY(-100%);
+}
+
+
+/******************************************************************************
+ ******************************************************************************
+
+                              R E S P O N S I V E 
+
+ ******************************************************************************
+*******************************************************************************/
+
+@media(max-width: 767px) {
+  // .navbar-toggle {
+  //   opacity: 0.6;
+  // }
+}
+
+@media(min-width: 768px) {
+  .navbar-toggle {
+    opacity: 0.8;
+  }
+  .page-headline-container {
+    max-width: 768px;
+  }
+  .page-headline-content {
+    font-size: 3em;
+  }
+  .page-subheadline-content {
+    font-size: 1.5em;
+  }
+}
+
+// md AND UP
+@media (min-width: 992px) {
+  .page-headline-content {
+    font-size: 3rem;
+  }
+  .page-headline-container {
+    max-width: 992px;
+  }
+}
+
+// lg
+@media (min-width: 1200p) {
+  .router-outlet-container {
+    max-width: 1200px;
+  }
+  .page-headline-container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1450px) {
+  .page-headline-container {
+    max-width: 100%;
+  }
+}

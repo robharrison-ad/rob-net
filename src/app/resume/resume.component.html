@@ -1,0 +1,51 @@
+<div class="top-spacer"></div>
+<div id="resumePage" class="page-wrapper resume-page-wrapper">
+
+    <div id="pdfAnchor" class="pdf-button-anchor">
+        <div id="innerAnchor" style="width: 100%">
+            <div id="zoomBtnHolder" class="zoom-button-container">
+                <button id="btnZoomDown" class="zoom-button zoomOut" (click)="zoomUp(false)"
+                    [disabled]="(zoomLevel <= 0.25)">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <div class="zoom-button-container-text">Zoom:
+                    {{zoomLevel | number:'1.0-1'}}</div>
+                <button id="btnZoomUp" class="zoom-button zoomIn" (click)="zoomUp(true)" [disabled]="(zoomLevel >= 3)">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+            <div class="vert-zoom-button-container horizontal" id="vertZoomBtnHolder">
+                <table>
+                    <tr>
+                        <td>
+                            <button id="btnVertZoomDown" class="zoom-button zoom-out" (click)="zoomUp(false)"
+                                [disabled]="(zoomLevel <= 0.25)">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vert-zoom-button-container-text">
+                                {{zoomLevel | number:'1.0-1'}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="btnVertZoomUp" class="zoom-button zoom-in" (click)="zoomUp(true)"
+                                [disabled]="(zoomLevel >= 3)">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="pdfViewerContainer" class="pdf-viewer-container">
+            <pdf-viewer id="pdfViewer" src="../assets/rob-harrison-resume.pdf" [show-all]="true" [page]="page"
+                (after-load-complete)="afterLoadComplete($event)" [autoresize]="true" [zoom]="zoomLevel"
+                page-rendered="pageRendered($event)">
+            </pdf-viewer>
+        </div>
+    </div>
+</div>

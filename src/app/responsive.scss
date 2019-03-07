@@ -1,0 +1,73 @@
+// ************************* xs only (includes ipad portrait)
+@media(max-width: 767px) {
+  .router-outlet-container {
+    max-width: 767px;
+  }
+}
+
+// ************************* sm & xs
+@media(max-width: 991px) {}
+
+// ************************* sm
+@media (min-width: 768px) and (max-width: 991px) {
+  .router-outlet-container {
+    max-width: 768px;
+  }
+  .page-headline-container {
+    max-width: 768px;
+  }
+  /************** HOME PAGE ***************/
+}
+
+// ipad landscape
+// md ONLY
+@media (min-width: 992px) and (max-width: 1199px) {
+  /************** HOME PAGE ***************/
+}
+
+// md AND UP
+@media (min-width: 992px) {
+  .page-headline-content {
+    font-size: 3rem;
+  }
+  .router-outlet-container {
+    max-width: 992px;
+  }
+  .page-headline-container {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1024) {
+  .router-outlet-container {
+    max-width: 1024px;
+  }
+  .page-headline-container {
+    max-width: 1024px;
+  }
+  /************** HOME PAGE ***************/
+}
+
+// lg
+@media (min-width: 1200p) and (max-width: 1450) {
+  .router-outlet-container {
+    max-width: 1200px;
+  }
+  .page-headline-container {
+    max-width: 1200px;
+  }
+  /************** HOME PAGE ***************/
+}
+
+// lg (and beyond)
+@media (min-width: 1200px) {}
+
+@media (min-width: 1450px) {
+  .router-outlet-container {
+    max-width: none;
+  }
+  .page-headline-container {
+    max-width: 100%;
+  }
+  /************** HOME PAGE ***************/
+}

@@ -1,0 +1,32 @@
+@import '../../variables';
+
+.cc-rewards-demo-content {
+  font-size: 20px;
+  font-family: 'latomedium';
+  color: $bb-secondary;
+  a {
+    color: $bb-accent-alt;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'latomedium'
+  }
+  a:hover {
+    color: $bb-accent-light;
+    text-decoration: none;
+  }
+}
+
+.video-player {
+  width: 800px;
+  margin-left: calc(50vw - 400px);
+  margin-right: calc(50vw - 400px);
+  margin-top: 70px;
+  &.hide {
+    display: noone;
+  }
+}
+
+.cc-rewards-headline-content {
+  text-align: center;
+  color: $bb-secondary;
+}

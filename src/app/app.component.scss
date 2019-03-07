@@ -1,0 +1,44 @@
+body {
+  font-family: 'latomedium';
+  // background-image: url(../assets/images/coding-3-flip-75.png);
+  background-size: cover;
+  background-repeat: repeat-y;
+}
+
+
+.fade-out {
+  transition: opacity 1s ease-out 2s;
+  opacity: 0;
+}
+
+
+/* ****** RESPONSIVE **********/
+
+
+
+@media(max-width: 767px) {
+  .router-outlet-container {
+    max-width: 767px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .router-outlet-container {
+    max-width: 991px;
+  }
+}
+
+// ipad landscape
+@media (min-width: 1024px) and (max-width: 1024) {
+  .router-outlet-container {
+    max-width: 1024px;
+  }
+}
+
+
+@media (min-width: 1200p) and (max-width: 1450) {
+  .router-outlet-container {
+    max-width: 1200px;
+  }
+}
+

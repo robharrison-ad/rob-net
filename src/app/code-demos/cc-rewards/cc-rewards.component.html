@@ -1,0 +1,46 @@
+<div class="top-spacer"></div>
+<div class="page-wrapper cc-rewards-demo-container">
+  <div class="page-container">
+
+    <div class="page-headline-content cc-rewards-headline-content themed shadow">
+      <div>Credit Card Rewards Demo</div>
+    </div>
+    <div class=" cc-rewards-demo-content">
+      <p>
+        This application was written in Angular with a SQL databasse as the "main engine" back end, which also connected
+        to various other data sources. It sits inside the
+        main online banking application as a module. We used Bootstrap for the layout and some of the controls, and
+        other controls were custom made. All elements of the application,m including
+        developing SQL scripts, C# data layer classes and a large portion of the front end.
+
+        The basic functions are:
+      </p>
+      <ul>
+        <li>
+          To select or view your quarterly rewards category. If the category has already been selected for the quarter
+          it cannot be changed.
+        </li>
+        <li>
+          To view your spending activity and see the resulting Cash Rewards earned on each purchase. There are three
+          categories of purchases that earn rewards, each one with a different rewards percentage, so that is displayed
+          as well.
+        </li>
+        <li>
+          To redeem your accumulated rewards. You can have it deposited into another account, applied to your credit
+          card balance, or donated to charity. You can also schedule redemptions to occur automatically, at a set date
+          interval.
+        </li>
+      </ul>
+
+      <p>
+        You can start the video using the controls on the player below, <a (click)="locateAndPlay()">or just click
+          here</a>.
+      </p>
+
+      <video id="ccRewardsVideo" controls="true" preload="auto" width="800px" class="video-player">
+        <source src="../../../assets/video/cc-rewards-web.mp4" type="video/mp4">
+        <track label="English" kind="captions" srclang="en" src="../../../assets/video/onlineBanking.vtt" mode="showing" default>
+      </video>
+    </div>
+  </div>
+</div>

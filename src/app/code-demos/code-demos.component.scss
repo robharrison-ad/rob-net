@@ -1,0 +1,43 @@
+@import "../variables";
+
+.code-demos-container {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+.code-headline-content {
+  margin-bottom: 35px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.code-closing-headline-content {
+  margin-top: 35px;
+}
+
+.code-page-content {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 2px 2px 1px #333;
+}
+
+.sub {
+  font-size: 16px;
+  font-style: italic;
+}
+
+ul {
+  li {
+    a {
+      color: $bb-accent-alt;
+      font-size: 20px;
+    }
+    a:hover {
+      color: $bb-accent-alt-light;
+      text-decoration: none;
+    }
+    &:active {
+      color: $bb-accent-alt-light;
+    }
+  }
+}

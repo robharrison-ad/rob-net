@@ -1,0 +1,14 @@
+// {
+//   "template": RTemplate, 
+//   "numberOfObjects": 11,
+//   "positionClasses": [
+//     "r-position-class-1"
+//   ], 
+//   "positionChangeInterval": 1500,
+//   "positionChangeDuration": 750,
+//   "pauseLength": 10,
+//   "runTime": 300,
+//   "endPositionClass": "",
+//   "restEvery": 60,
+//   "restDuration": 30
+// }

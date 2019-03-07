@@ -1,0 +1,119 @@
+.sky {
+  .rbgp {
+    background-color: $sky-primary;
+  }
+  .fbg-prmiary {
+    color: $sky-primary;
+  }
+  .rbgs {
+    background-color: $sky-secondary;
+  }
+  .fbgs {
+    color: $sky-secondary;
+  }
+  .rbg-accent {
+    background-color: $sky-accent;
+  }
+  .fbg-accent {
+    color: $sky-accent;
+  }
+  .rbg-accent-alt {
+    background-color: $sky-accent-alt;
+  }
+  .fbg-accent-alt {
+    color: $sky-accent-alt;
+  }
+}
+
+.bb {
+  .rbgp {
+    background-color: $bb-primary;
+  }
+  .rbgp-dark {
+    color: darken($bb-primary, 25%);
+  }
+  .rbgp-light {
+    color: lighten($bb-primary, 25%);
+  }
+  .rfg-prmiary {
+    color: $bb-primary;
+  }
+  .rfgp-dark {
+    color: darken($bb-primary, 25%);
+  }
+  .rfgp-light {
+    color: lighten($bb-primary, 25%);
+  }
+  .rfgs {
+    background-color: $bb-secondary;
+  }
+  .rbgs-dark {
+    color: darken($bb-secondary, 25%);
+  }
+  .rbgs-light {
+    color: lighten($bb-secondary, 25%);
+  }
+  .fbgs {
+    color: $bb-secondary;
+  }
+  .fbgs-dark {
+    color: darken($bb-secondary, 25%);
+  }
+  .fbgs-light {
+    color: lighten($bb-secondary, 25%);
+  }
+  .rbg-accent {
+    background-color: $bb-accent;
+  }
+  .rbg-accent-dark {
+    color: darken($bb-accent, 25%);
+  }
+  .rbg-accent-light {
+    color: lighten($bb-accent, 25%);
+  }
+  .fbg-accent {
+    color: $bb-accent;
+  }
+  .fbg-accent-dark {
+    color: darken($bb-accent, 25%);
+  }
+  .fbg-accent-light {
+    color: lighten($bb-accent, 25%);
+  }
+  .rbg-accent-alt {
+    background-color: $bb-accent-alt;
+  }
+  .rbg-accent-alt-dark {
+    color: darken($bb-accent-alt, 25%);
+  }
+  .rbg-accent-alt-light {
+    color: lighten($bb-accent-alt, 25%);
+  }
+  .fbg-accent-alt {
+    color: $bb-accent-alt;
+  }
+  .fbg-accent-alt-dark {
+    color: darken($bb-accent-alt, 25%);
+  }
+  .fbg-accent-alt-light {
+    color: lighten($bb-accent-alt, 25%);
+  }
+}
+
+@mixin shadow-darker($parent, $color) {
+  #{$parent} {
+    background-color: $color !important;
+  }
+  .shadow-dark {
+    background-color: darken($color, 25%) !important;
+  }
+  .shadow-light {
+    background-color: lighten($color, 25%) !important;
+  }
+}
+
+@mixin bg-gradient-variant($parent, $color) {
+  #{$parent} {
+    background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x !important;
+  }
+}

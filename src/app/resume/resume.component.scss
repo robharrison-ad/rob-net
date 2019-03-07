@@ -1,0 +1,156 @@
+@import '../variables';
+
+.resume-page-wrapper {
+  width: 100%;
+}
+
+.pdf-viewer-container {
+  z-index: 200;
+  padding-top: 60px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.pdf-button-anchor {
+  z-index: 220;
+}
+
+.page-button-container {
+  margin-top: 7px;
+  border: 1px solid #8e8d8d;
+  border-radius: 4px;
+}
+
+.zoom-button-container {
+  z-index: 220;
+}
+
+.zoom-button-container-text {
+  width: 100px;
+  float: left;
+  font-weight: bold;
+  font-size: 1em;
+  color: #FFF;
+  text-align: center;
+}
+
+.zoom-button {
+  padding: 3px;
+  width: 40px;
+  height: 28px;
+  &.zoomIn {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  &.zoomOut {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+}
+
+.zoom-button {
+  float: left;
+  z-index: 205;
+  display: block;
+  color: rgb(7, 58, 116);
+}
+
+.zoom-button-container {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(7, 58, 116); // z-index: 110;
+  opacity: 0.3;
+  border-radius: 4px;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+#anchor {
+  position: relative;
+  z-index: 201;
+}
+
+#zoomBtnHolder {
+  position: absolute;
+  &.vertical {
+    display: none;
+  }
+}
+
+#vertZoomBtnHolder {
+  position: absolute;
+  left: 1080px;
+  top: 454px;
+  background-color: rgb(7, 58, 116);
+  border-radius: 4px;
+  z-index: 220;
+  opacity: 0.5;
+  transition-property: opacity;
+  transition-duration: 500ms;
+  &:hover {
+   opacity: 1;
+  }
+  .zoom-button.zoom-out {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+  .zoom-button.zoom-in {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  .vert-zoom-button-container-text {
+    height: 25px;
+    color: $bb-secondary;
+    text-align: center;
+  }
+  &.horizontal {
+    opacity: 0;
+  }
+}
+
+@media (min-width:768px) {
+  .resume-page-button-container.left {
+    button.page-button {
+      float: right;
+    }
+    i {
+      float: left;
+    }
+  }
+  .resume-page-button-container.right {
+    button.page-button {
+      float: left;
+    }
+    i {
+      float: right;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .resume-page-button-container.left {
+    button.page-button.left {
+      float: left;
+      i {
+        float: left;
+      }
+    }
+    button.page-button.right {
+      float: right;
+      i {
+        float: right;
+      }
+    }
+  }
+}
+
+.page-number-display {
+  min-width: 150px;
+}
+
+// TEMPLATE OVERRIDE
+.ng2-pdf-viewer-container {
+  // overflow-y: hidden !important;
+}

@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import '../variables';
+// base
+.flip {
+  position: absolute;
+  display: inline-block;
+  .front,
+  .back {
+    // z-index: 115;
+    display: block;
+    transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
+    transition-duration: .5s;
+    transition-property: transform, opacity;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: rgba(255, 255, 255, 0.0); //0.9
+    height: 13.5vw;
+    width: 13.5vw;
+    background-size: 9vw;
+    border-radius: 9vw;
+    .circle-title {
+      font-size: 1.8vw;
+      padding-right: 1.09vw;
+      padding-left: 1.09vw;
+      padding-top: 1.09vw;
+      border-top-right-radius: 10vw;
+      position: absolute;
+      border-top-left-radius: 10vw;
+      border-bottom-right-radius: 2vw;
+      border-bottom-left-radius: 2vw;
+      margin-top: 1vw;
+      width: 75%;
+      /* height: 75%; */
+      left: 12.5%;
+      text-align: center;
+      color: $bb-secondary;
+    }
+  }
+  .front {
+    transform: rotateY(0deg);
+    opacity: 0.9;
+    background: rgba(0, 161, 201, 0.0); //0.9
+  }
+  .back {
+    transform: rotateY(-180deg);
+    opacity: 0;
+    background: rgba(0, 161, 201, 0); //1
+    background-size: 9vw;
+    p {
+      color: #999;
+    }
+  }
+  &:hover,
+  .flipped {
+    .front {
+      transform: rotateY(180deg);
+      opacity: 0.25;
+    }
+    .back {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+  }
+  &.flip-vertical {
+    .back {
+      transform: rotateX(-180deg);
+    }
+    &:hover {
+      .front {
+        transform: rotateX(180deg);
+      }
+      .back {
+        transform: rotateX(0deg);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+/* ****** RESPONSIVE **********/
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .flip {
+    .back {
+      .circle-title {
+        font-size: 0.5em;
+      }
+    }
+  }
+}
+
+// ************************* sm
+@media (min-width: 992px) and (max-width: 1199) {
+  .flip {
+    .circle-title {
+      font-size: 0.8em;
+    }
+  }
+}
+
+@media(min-width: 1200) and (max-width: 1399) {
+  .flip {
+    .circle-title {
+      font-size: 1em;
+    }
+  }
+}
+
+@media(min-width: 1400px) {
+  .flip {
+    .circle-title {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.text-shadow {
+  // text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04), 3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04), 0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04), 7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04), 13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04), 17px 17px rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04), 19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.4), 2px 2px rgba(0, 0, 0, 0.4), 3px 3px rgba(0, 0, 0, 0.4), 4px 4px rgba(0, 0, 0, 0.4), 0.125rem 0.125rem rgba(0, 0, 0, 0.4), 6px 6px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+}
