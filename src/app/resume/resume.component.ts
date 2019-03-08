@@ -1,8 +1,6 @@
 import { Component, OnInit, Renderer2, AfterViewInit } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
 import { GlobalFunctionsService } from '../shared/global-functions.service';
 import { GlobalDataService } from '../shared/global-data.service';
-import { RoutesRecognized } from '@angular/router';
 
 @Component({
   selector: 'app-resume',

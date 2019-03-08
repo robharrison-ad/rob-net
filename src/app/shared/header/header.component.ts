@@ -21,6 +21,11 @@ export class HeaderComponent implements OnInit {
     this.globalData = globalData;
   }
 
+  headerClick() {
+    this.globalFunctions.swapClass('bs-navbar-collapse', '', 'in');
+    this.globalFunctions.swapClass('headerButton', '', 'collapsed');
+  }
+
   ngOnInit() {
   
   }

@@ -7,8 +7,6 @@
 @import "./assets/css/magic.css";
 @import "./assets/css/stars.scss";
 @import "../node_modules/aos/dist/aos.css";
-
-
 @mixin shadow-darker($parent, $color) {
   #{$parent} {
     background-color: $color !important;
@@ -185,24 +183,32 @@
   }
 }
 
-.angle-bracketed-content {
-  
-}
-
 .angle-bracketed-content::before {
   content: "<";
+}
+
+.angle-bracketed-content.closing::before {
+  content: "</";
 }
 
 .angle-bracketed-content::after {
   content: ">";
 }
 
+.angle-bracketed-content.self-closing::after {
+  content: " />";
+}
+
+.closing-angle-bracketed-content::after {
+  content: ">";
+}
+
 .angle-bracketed-content.hover-braces:hover::after {
-  content: "}}";
+  content: " }}";
 }
 
 .angle-bracketed-content.hover-braces:hover::before {
-  content: "{{";
+  content: "{{ ";
 }
 
 .themed {
