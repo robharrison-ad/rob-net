@@ -59,14 +59,14 @@
         text-align: center;
         width: 98vw;
         top: 50vh; // text-shadow: 2px 2px 2px #bdbdbd, -2px -2px 2px #bdbdbd, -2px 2px 2px #fcfcfc, 2px -2px 2px #fcfcfc;
-        text-shadow: 1px 1px 0px #ff5c5c, 1px 2px 0px #f83f3f, 1px 3px 0px #f83f3f, 2px 4px 0px #f83f3f, 3px 5px 0px #f83f3f, 4px 6px 0px #f83f3f, 5px 7px 0px #f83f3f; 
+        text-shadow: 1px 1px 0px #ff5c5c, 1px 2px 0px #f83f3f, 1px 3px 0px #f83f3f, 2px 4px 0px #f83f3f, 3px 5px 0px #f83f3f, 4px 6px 0px #f83f3f, 5px 7px 0px #f83f3f;
       }
     }
     &:hover {
       .intro-enter-text {
         .intro-enter-text-content {
           color: $bb-primary-light;
-          text-shadow: 1px 1px 0px #1eafc2, 1px 2px 0px #1eafc2, 1px 3px 0px #1eafc2, 2px 4px 0px #1eafc2, 3px 5px 0px #1eafc2, 4px 6px 0px #1eafc2, 5px 7px 0px #1eafc2; 
+          text-shadow: 1px 1px 0px #1eafc2, 1px 2px 0px #1eafc2, 1px 3px 0px #1eafc2, 2px 4px 0px #1eafc2, 3px 5px 0px #1eafc2, 4px 6px 0px #1eafc2, 5px 7px 0px #1eafc2;
         }
       }
     }
@@ -147,6 +147,9 @@
         max-height: 50px;
         max-width: 350px;
       }
+    }
+    .intro-section-two-container {
+      max-height: 300px;
     }
   }
 }
