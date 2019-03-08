@@ -18,6 +18,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   savedZoom: number = 1;
   buttonsMouseOver: boolean = false;
   to: any;
+  showButtons: boolean = true;
 
   constructor(private global: GlobalDataService,
     private globalFunctions: GlobalFunctionsService
@@ -38,7 +39,17 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       this.buttonsMouseOver = false;
     });
 
-    document.addEventListener
+    if (window.innerWidth < 767) {
+      this.zoomLevel = 0.8;
+    }
+
+    if (window.innerWidth < 450) {
+      this.zoomLevel = 0.6;
+    }
+
+    if (window.innerWidth < 400) {
+      this.zoomLevel = 0.4;
+    }
   }
 
   ngAfterViewInit() {
@@ -100,7 +111,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   goUp() {
     window.scrollTo({
-      behavior: "smooth", 
+      behavior: "smooth",
       left: 0,
       top: 0
     })
@@ -126,6 +137,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   }
 
   pageRenderedI(e) {
-    
+
   }
 }
