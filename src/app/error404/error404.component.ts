@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalFunctionsService } from '../shared/global-functions.service';
 
 @Component({
   selector: 'app-error404',
@@ -10,7 +11,9 @@ export class Error404Component implements OnInit, AfterViewInit {
 
   sueMe;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, 
+    private globalFunctions: GlobalFunctionsService
+    ) { }
 
   ngOnInit() {
   }
@@ -42,6 +45,8 @@ export class Error404Component implements OnInit, AfterViewInit {
           b.classList.remove('eaten');
         }
       }
+      this.globalFunctions.swapClassByQuery('bs-tooltip-container', 'in', '');
+      this.globalFunctions.swapClassByQuery('bs-tooltip-container', 'show', '');
       this.checkPacman();
     }, 500);
   }
