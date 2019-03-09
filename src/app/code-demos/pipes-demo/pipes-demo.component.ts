@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { GlobalFunctionsService } from '../../shared/global-functions.service';
 
 @Component({
   selector: 'app-pipes-demo',
@@ -125,9 +126,9 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
     },
 
   ];
+  navigateByUrl: Function;
 
-
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private globalFunctions: GlobalFunctionsService) {
     router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
@@ -145,6 +146,17 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.route.fragment.subscribe(fragment => { this.fragment = fragment });
+    this.globalFunctions.scrollToTop(100, 0, 0);
+    this.navigateTo = this.globalFunctions.navigateTo;
+    this.navigateByUrl = this.globalFunctions.navigateByUrl;
+  }
+
+  navigateTo(params) {
+    this.globalFunctions.navigateTo(params);
+  }
+
+  openLink(url: string) {
+    this.globalFunctions.navigateByUrl(url);
   }
 
   ngAfterViewInit(): void {

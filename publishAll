@@ -1,0 +1,14 @@
+publishAll () {
+	cd /Users/robharrison/projects/rob-net
+	ng-build --prod
+	cd dist/rob-net
+	rsync copy-all ./ /Volumes/pubdr
+	echo "$1"
+	if [ "$1" != "" ]; then
+		git checkout master && git merge $1
+	fi
+	git add .
+	git commit -m "auto-commit"
+	git push
+	popd
+}

@@ -1,44 +1,66 @@
+@import '../app/variables';
 body {
-  font-family: 'latomedium';
-  // background-image: url(../assets/images/coding-3-flip-75.png);
+  font-family: 'latomedium'; // background-image: url(../assets/images/coding-3-flip-75.png);
   background-size: cover;
   background-repeat: repeat-y;
 }
-
 
 .fade-out {
   transition: opacity 1s ease-out 2s;
   opacity: 0;
 }
 
+.back-button {
+  position: fixed;
+  top: 10px;
+  left: 0px;
+  padding-left: 10px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  z-index: 2900;
+  opacity: 0.2;
+  cursor: pointer;
+  text-shadow: 2px 2px 0px #FFF;
+  i {
+    font-size: 40px;
+    color: rgb(92, 92, 92);
+  }
+  &:hover {
+    opacity: 0.8;
+    i {
+      color: $bb-accent;
+      text-shadow: $bb-accent-light;
+    }
+  }
+  &.going-down {
+    opacity: 1;
+    i {
+      color: $bb-accent;
+      text-shadow: $bb-accent-light;
+    }
+  }
+}
 
 /* ****** RESPONSIVE **********/
 
-
-
-@media(max-width: 767px) {
-  .router-outlet-container {
-    max-width: 767px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .router-outlet-container {
-    max-width: 991px;
-  }
-}
-
-// ipad landscape
-@media (min-width: 1024px) and (max-width: 1024) {
-  .router-outlet-container {
-    max-width: 1024px;
-  }
-}
-
-
-@media (min-width: 1200p) and (max-width: 1450) {
-  .router-outlet-container {
-    max-width: 1200px;
-  }
-}
-
+// @media(max-width: 767px) {
+//   .router-outlet-container {
+//     max-width: 767px;
+//   }
+// }
+// @media (min-width: 768px) and (max-width: 991px) {
+//   .router-outlet-container {
+//     max-width: 991px;
+//   }
+// }
+// // ipad landscape
+// @media (min-width: 1024px) and (max-width: 1024) {
+//   .router-outlet-container {
+//     max-width: 1024px;
+//   }
+// }
+// @media (min-width: 1200p) and (max-width: 1450) {
+//   .router-outlet-container {
+//     max-width: 1200px;
+//   }
+// }

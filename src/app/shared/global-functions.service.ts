@@ -50,6 +50,10 @@ export class GlobalFunctionsService {
     this.globalData.router.navigate([destination]);
   }
 
+  navigateByUrl(url) {
+    window.open(url);
+  }
+
   onScroll(event) {
     if (!(this.globalData && this.globalData.scrollData && event.srcElement)) {
       return
@@ -60,7 +64,6 @@ export class GlobalFunctionsService {
       this.globalData.scrollData.beenToTop = true;
     }
     this.globalData.scrollData.direction = (this.globalData.scrollData.currentTop < previousTop);
-    
   }
 
   setIntroClasses(wait: number = 0) {
@@ -190,19 +193,18 @@ export class GlobalFunctionsService {
   }
 
   menuClick(page: string, activeRoute: ActivatedRoute) {
-    
+
   }
 
   scrollToTop(delay: number, x: number, y: number) {
-    if (delay) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: x,
-          left: y,
-          behavior: 'smooth'
-        });
-      }, delay);
-    }
+    
+    setTimeout(() => {
+      window.scrollTo({
+        top: x,
+        left: y,
+        behavior: 'smooth'
+      });
+    }, delay);
   }
 
 

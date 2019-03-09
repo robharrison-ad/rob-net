@@ -3,10 +3,81 @@
 .sample-usage-container {
   color: rgb(241, 236, 236);
   font-family: 'latolight', "Segoe UI", Tahoma, Geneva, Verdana, "sans-serif";
-  padding: 30px;
-  table {
-    font-size: 1.0em;
+  padding: 30px !important;
+  position: relative;
+}
+
+.contents-columns {
+  font-size: 1em;
+}
+
+.header-row {
+  background-color: $bb-primary-light;
+  font-weight: bold;
+  font-family: 'latoheavy';
+  font-size: 1.5em;
+}
+
+.details-row {
+  font-family: 'latomedium';
+  font-size: 1.3em;
+  button {
+    margin-top: 15px;
   }
+}
+
+@media(max-width: 676px) {
+  .header-row-xxs {
+    background-color: $bb-primary-light;
+    font-weight: bold;
+    font-family: 'latoheavy';
+    font-size: 1.5em;
+    margin-top: 25px;
+  }
+  .details-row {
+    button {
+      width: 100%;
+      font-size: inherit;
+    }
+  }
+  code {
+    font-size: 1em !important;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: rgba(247, 244, 244, 0.719);
+    color: #333333;
+  }
+}
+
+.xxs-repeater-row {
+  margin-bottom: 10px;
+  div {
+    background-color: rgba(190, 189, 189, 0.747);
+    width: 100%;
+    margin-bottom: 2px;
+    color: rgb(66, 66, 66);
+  }
+  span {
+    font-weight: bold;
+    font-family: 'latobold';
+    color: #000;
+  }
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+.wip {
+  width: 100%;
+}
+.coming-soon {
+  background-color: rgba(121, 177, 196, 0.61);
+  color: #FFF;
+  font-size: 2em;
+}
+table {
+  font-size: 1.0em;
 }
 
 h1,

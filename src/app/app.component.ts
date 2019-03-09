@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import * as AOS from 'aos';
-import { DOCUMENT } from "@angular/common";
+import { DOCUMENT, Location } from "@angular/common";
 import { GlobalDataService } from './shared/global-data.service';
 import { GlobalFunctionsService } from './shared/global-functions.service'
 import { Router, NavigationStart } from "@angular/router";
@@ -14,6 +14,7 @@ import { filter } from "rxjs/operators";
 })
 export class AppComponent implements OnInit {
   title = 'rob-net';
+  scrollTop: number;
 
   aosConfig = {
     offset: 0,
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit {
     @Inject(DOCUMENT) document,
     private globalData: GlobalDataService,
     private globalFunctions: GlobalFunctionsService,
-    private router: Router
+    private router: Router, 
+    private location: Location
   ) {
     router.events
             .pipe(
@@ -57,9 +59,19 @@ export class AppComponent implements OnInit {
       this.globalFunctions.scrollToTop(2500, 0, 0);
     }
     this.globalFunctions.setIntroClasses(200);
+    window.addEventListener('scroll', (e) => {
+      this.globalFunctions.onScroll(e);
+      this.scrollTop = e.srcElement.scrollingElement.scrollTop;
+    });
   }
 
+  onScroll(e: Event) {
+    this.scrollTop = window.scrollY;
+  }
 
+  backClick() {
+    this.globalFunctions.scrollToTop(0, 0, 0);
+  }
 
 
 
