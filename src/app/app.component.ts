@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) document,
-    private globalData: GlobalDataService,
+    public globalData: GlobalDataService,
     private globalFunctions: GlobalFunctionsService,
     private router: Router, 
     private location: Location
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     this.globalFunctions.setIntroClasses(200);
     window.addEventListener('scroll', (e) => {
       this.globalFunctions.onScroll(e);
-      this.scrollTop = e.srcElement.scrollingElement.scrollTop;
+      this.scrollTop = window.scrollY;
     });
   }
 
