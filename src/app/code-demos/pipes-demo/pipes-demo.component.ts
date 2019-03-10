@@ -145,6 +145,8 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
     });
    }
 
+   
+
   ngOnInit() {
     this.route.fragment.subscribe(fragment => { this.fragment = fragment });
     this.globalFunctions.scrollToTop(100, 0, 0);

@@ -5,10 +5,16 @@ publishAll () {
 	rsync copy-all ./ /Volumes/pubdr
 	echo "$1"
 	if [ "$1" != "" ]; then
-		git checkout master && git merge $1
+  	git add .
+   	git commit -m "auto-commit"
+		git checkout master
+		git merge $1
+		if [ $? =eq 0 ]; then 
+    	git push
+   	fi
+   	popd
+   	if [ "$1" != "" ]; then
+   		git checkout $1
+   	fi
 	fi
-	git add .
-	git commit -m "auto-commit"
-	git push
-	popd
 }
