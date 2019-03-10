@@ -12,7 +12,7 @@ import { filter } from "rxjs/operators";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'rob-net';
   scrollTop: number = 0;
 
@@ -29,27 +29,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     @Inject(DOCUMENT) document,
     public globalData: GlobalDataService,
     private globalFunctions: GlobalFunctionsService,
-    private router: Router, 
+    private router: Router,
     private location: Location
   ) {
     router.events
-            .pipe(
-                // The "events" stream contains all the navigation events. For this demo,
-                // though, we only care about the NavigationStart event as it contains
-                // information about what initiated the navigation sequence.
-                filter(
-                    ( event: NavigationEvent ) => {
- 
-                        return( event instanceof NavigationStart );
- 
-                    }
-                )
-            ).subscribe(
-      (event: NavigationStart) => {
-        
-        this.globalFunctions.setIntroClasses();
-      }
-    )
+      .pipe(
+        // The "events" stream contains all the navigation events. For this demo,
+        // though, we only care about the NavigationStart event as it contains
+        // information about what initiated the navigation sequence.
+        filter(
+          (event: NavigationEvent) => {
+
+            return (event instanceof NavigationStart);
+
+          }
+        )
+      ).subscribe(
+        (event: NavigationStart) => {
+
+          this.globalFunctions.setIntroClasses();
+        }
+      )
   }
 
   ngOnInit() {
@@ -59,28 +59,30 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.globalFunctions.scrollToTop(2500, 0, 0);
     }
     this.globalFunctions.setIntroClasses(200);
-    window.addEventListener('scroll', (e) => {
-      this.globalFunctions.onScroll(e);
-      this.scrollTop = window.scrollY;
-    });
+    // window.addEventListener('scroll', (e) => {
+    //   this.globalFunctions.onScroll(e);
+    //   this.scrollTop = window.scrollY;
+    // });
   }
 
-  onScroll(e: Event) {
-    this.scrollTop = window.scrollY;
-  }
+  // onScroll(e: Event) {
+  //   this.scrollTop = window.scrollY;
+  // }
 
-  backClick() {
-    this.globalFunctions.scrollToTop(0, 0, 0);
-    let e = new Event('scroll');
-    window.dispatchEvent(e);
-  }
+  // backClick() {
+  //   this.globalFunctions.scrollToTop(0, 0, 0);
+  //   setTimeout(() => {
+  //     let e = new Event('scroll');
+  //     window.dispatchEvent(e);
+  //   }, 750);
+  // }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      console.log('fire!');
-      window.dispatchEvent(new Event('scroll'));
-    }, 4000);
-  }
+  // ngAfterViewInit() {
+  //   setTimeout(() => {
+  //     console.log('fire!');
+  //     window.dispatchEvent(new Event('scroll'));
+  //   }, 1500);
+  // }
 
 
 }

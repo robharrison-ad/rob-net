@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { GlobalFunctionsService } from '../../shared/global-functions.service';
 
@@ -128,7 +129,7 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
   ];
   navigateByUrl: Function;
 
-  constructor(private route: ActivatedRoute, private router: Router, private globalFunctions: GlobalFunctionsService) {
+  constructor(private route: ActivatedRoute, private router: Router, private globalFunctions: GlobalFunctionsService, private location: Location) {
     router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
@@ -149,6 +150,9 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
     this.globalFunctions.scrollToTop(100, 0, 0);
     this.navigateTo = this.globalFunctions.navigateTo;
     this.navigateByUrl = this.globalFunctions.navigateByUrl;
+    window.addEventListener('scroll', () => {
+      this.location.replaceState("/pipes");
+    });
   }
 
   navigateTo(params) {
