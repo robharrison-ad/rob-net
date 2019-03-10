@@ -20,6 +20,13 @@ export class IntroComponent implements OnInit {
   ngOnInit() {
     this.globalFunctions.scrollToTop(0, 0, 0);
     this.globalFunctions.setIntroClasses();
+    setTimeout(() => {
+      window.scrollTo({
+        behavior: 'smooth',
+        left: 0,
+        top: 0
+      })
+    }, 2000);
   }
 
   clickEnter(page) {

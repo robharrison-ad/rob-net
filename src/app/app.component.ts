@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import * as AOS from 'aos';
 import { DOCUMENT, Location } from "@angular/common";
 import { GlobalDataService } from './shared/global-data.service';
@@ -12,9 +12,9 @@ import { filter } from "rxjs/operators";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'rob-net';
-  scrollTop: number;
+  scrollTop: number = 0;
 
   aosConfig = {
     offset: 0,
@@ -71,9 +71,16 @@ export class AppComponent implements OnInit {
 
   backClick() {
     this.globalFunctions.scrollToTop(0, 0, 0);
+    let e = new Event('scroll');
+    window.dispatchEvent(e);
   }
 
-
+  ngAfterViewInit() {
+    setTimeout(() => {
+      console.log('fire!');
+      window.dispatchEvent(new Event('scroll'));
+    }, 4000);
+  }
 
 
 }

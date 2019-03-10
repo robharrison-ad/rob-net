@@ -58,12 +58,25 @@ export class GlobalFunctionsService {
     if (!(this.globalData && this.globalData.scrollData && event.srcElement)) {
       return
     }
+    let sTop = 0;
     const previousTop = this.globalData.scrollData.currentTop
-    this.globalData.scrollData.currentTop = event.srcElement.scrollingElement.scrollTop;
-    if (this.globalData.scrollData.currentTop <= 100) {
-      this.globalData.scrollData.beenToTop = true;
+    try {
+      const el = event.srcElement;
+      if (el.scrollingElement) {
+        sTop = el.scrollingElement.scrollTop;
+      }
+      else if (el.scrollY !== undefined) {
+        sTop = el.scrollY;
+      }
+      this.globalData.scrollData.currentTop = sTop;;
+      if (this.globalData.scrollData.currentTop <= 100) {
+        this.globalData.scrollData.beenToTop = true;
+      }
+      this.globalData.scrollData.direction = (this.globalData.scrollData.currentTop < previousTop);
     }
-    this.globalData.scrollData.direction = (this.globalData.scrollData.currentTop < previousTop);
+    catch (e) {
+      console.error(e);
+    }
   }
 
   setIntroClasses(wait: number = 0) {
@@ -197,7 +210,7 @@ export class GlobalFunctionsService {
   }
 
   scrollToTop(delay: number, x: number, y: number) {
-    
+
     setTimeout(() => {
       window.scrollTo({
         top: x,
