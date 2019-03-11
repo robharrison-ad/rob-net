@@ -1,0 +1,596 @@
+<div class="top-spacer"></div>
+
+
+<!-- TRYING TO FIND CLASSES FOR hidden-sm, hidden-md etc. (somewhere in bootstrap) -->
+
+<div class="page-wrapper sample-usage-container">
+
+  <h1 class="blue-headline">Angular Custom Pipes</h1>
+  <h4>(Usage demos below)</h4>
+  <div class="spacer-20 xxs-only xs-only"></div>
+  <!-- xxs-only xs-only -->
+  <div class="xxs-only xs-only contents-columns">
+    <div class="row">
+
+      <div class="col-md-4">
+
+        <!-- <div class="xxs-gone row header-row">
+          <div class="col-md-2">
+            What it's called
+          </div>
+          <div class="col-md-10 details-row">
+            What it Does
+            <div class="col-md-1 details-row">
+              Repository
+            </div>
+            <div class="col-md-1 details-row">
+              Demo
+            </div>
+          </div>
+
+        </div> -->
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="col-md-2 header-row-xxs">
+          rMbGb Pipe
+        </div>
+        <div class="col-md-10 details-row">
+          This is an extension of the native Angular decimal Pipe that converts numeric data from
+          raw number to usits of Bytes (Bytes, KB, MB, GB, TB, PB -- whatever is appropriate based on the number).
+        </div>
+        <div class="col-md-1 details-row">
+          <button class="btb btn-secondary"
+            (click)="openLink('https://github.com/robharrison-ad/ngx-ripes/blob/master/src/app/pipes/rmbgb-pipe.ts')">
+            Github Link
+          </button>
+        </div>
+        <div class="col-md-1 details-row">
+          <a [routerLink]="['/pipes']" fragment='rmbgb'><button class="btn btn-secondary">
+              Demo Link
+            </button></a>
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="col-md-2 header-row-xxs">
+          rOrderBy Piipe
+        </div>
+        <div class="col-md-10 details-row">
+          Custom Angular pipe for sorting data - mostly usable in conjunction with <code>*ngFor</code> loops. Sorts
+          any part of an array, whether it's only a single layer deep (i.e., an array of strings or integers) or if
+          you need to sort an array of objects by a property that's multiple layers deep (i.e.,
+          student.class.school.district, if you were sorting a list of students by school district name.)
+        </div>
+        <div class="col-md-1 details-row">
+          <a href="https://github.com/robharrison-ad/ngx-ripes/blob/master/src/app/pipes/rOrderBy-pipe.ts"
+            target="_blank"><button class="btb btn-secondary">
+              Github Link
+            </button></a>
+        </div>
+        <div class="col-md-1 details-row">
+          <a [routerLink]="['/pipes']" fragment='rorderby'><button class="btn btn-secondary">
+              Demo Link
+            </button></a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="xxs-gone xs-gone contents-table">
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <td>
+            What it's Called
+          </td>
+          <td>
+            What it does
+          </td>
+          <td>
+            Repository
+          </td>
+          <td>
+            Demo
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            rMbGb
+          </td>
+          <td>
+            This is an extension of the native Angular decimal Pipe that converts numeric data from
+            raw number to usits of Bytes (Bytes, KB, MB, GB, TB, PB -- whatever is appropriate based on the number).
+          </td>
+          <td>
+            <a href="https://github.com/robharrison-ad/ngx-ripes/blob/master/src/app/pipes/rmbgb-pipe.ts"
+              target="_blank">Github Link</a>
+          </td>
+          <td>
+            <a [routerLink]="['/pipes']" fragment="rmbgb">Demo Link</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            rOrderBy
+          </td>
+          <td>
+            Custom Angular pipe for sorting data - mostly usable in conjunction with <code>*ngFor</code> loops. Sorts
+            any part of an
+            array, whether it's only a single layer deep (i.e., an array of strings or integers) or if you need to
+            sort an array of objects by a property that's multiple layers deep (i.e., student.class.school.district,
+            if
+            you
+            were sorting a list of students by school district name.) </td>
+          <td>
+            <a href="https://github.com/robharrison-ad/ngx-ripes/blob/master/src/app/pipes/rOrderBy-pipe.ts"
+              target="_blank">Github Link</a>
+          </td>
+          <td>
+            <a [routerLink]="['/pipes']" fragment="rorderby">Demo Link</a>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+
+  <h2 id="rmbgb">rmbgb Pipe Usage and Example</h2>
+  <div class="info-wrapper blue-div">
+    <p>
+      The table below shows various amounts of bytes, first unfiltered, then after the rMbGb pipe. The syntax for piping
+      the data is as follows:
+    </p>
+  </div>
+  <code>
+    <span class="div-code"> <span class="ngb"> dataUser.bytesUsed | rmbgb  </span> </span>
+</code>
+  <br />
+  <p>Easy as that!</p>
+
+  <div class="xxs-only xs-only spacer-10"></div>
+  <div class="xxs-only xs-only contents-columns">
+    <div class="row">
+
+      <div class="col-md-4">
+
+        <div class="xxs-gone row header-row">
+          <div class="col-md-2">
+            What it's called
+          </div>
+          <div class="col-md-10 details-row">
+            What it Does
+            <div class="col-md-1 details-row">
+              Repository
+            </div>
+            <div class="col-md-1 details-row">
+              Demo
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-12 xxs-repeater-row" *ngFor="let dataUser of sampleUsers">
+
+        <div class="col-md-3 details-row">
+          <span class="vertical-header">User ID:&nbsp;&nbsp;</span>{{ dataUser.userId }}
+        </div>
+        <div class="col-md-3 details-row">
+          <span
+            class="vertical-header">Name:&nbsp;&nbsp;</span>{{ dataUser.userInfo.lastName +  ', ' + dataUser.userInfo.firstName }}
+        </div>
+        <div class="col-md-3 details-row">
+          <span class="vertical-header">Data Usage (raw):&nbsp;&nbsp;</span>{{ dataUser.bytesUsed }}
+        </div>
+        <div class="col-md-3 details-row">
+          <span class="vertical-header">Data Usage (piped):&nbsp;&nbsp;</span>{{ dataUser.bytesUsed | rmbgb }}
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <table class="xxs-gone table table-bordered table-striped table-hover r-sample-results-table table-fixed "
+    id="r-sample-results-table">
+    <thead id="r-sample-results-table-header" class="table-head-fixed">
+      <tr>
+        <td id="headerCol1">
+          User ID
+        </td>
+        <td id="headerCol2">
+          Name
+        </td>
+
+        <td id="headerCol3">
+          Data Usage<br /><span class="text-12">(raw number from data)</span>
+        </td>
+        <td id="headerCol4">
+          Data Usage<br /><span class="text-12">(filtered through rmbgb pipe)</span>
+        </td>
+      </tr>
+    </thead>
+    <tbody id="r-sample-results-table-body" class=" table-body-fixed">
+      <tr *ngFor="let dataUser of sampleUsers">
+        <td id="bodyCol1">{{ dataUser.userId }}</td>
+        <td id="bodyCol2">{{ dataUser.userInfo.lastName +  ', ' + dataUser.userInfo.firstName }}</td>
+
+        <td id="bodyCol3">
+          <div class="full-width text-center outer-data-source-container">
+            <div class="inner-data-source-container">
+              {{ dataUser.bytesUsed }}
+            </div>
+          </div>
+        </td>
+        <td id="bodyCol4">
+          <div class="full-width text-center outer-data-source-container">
+            <div class="inner-data-source-container">
+              {{ dataUser.bytesUsed | rmbgb }}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="xxs-only xs-only spacer-line-20"></div>
+
+  <h1 id="rorderby">rOrderBy Pipe Usage and Example</h1>
+
+
+  <div class="info-wrapper">
+    <p>
+      For this one, we will use an expanded dataset from the "projects" data. (All of the raw data can be seen <a
+        href="#rawData">below</a>.)
+    </p>
+    <p class="sub-p">
+      The order by pipe can function as a standard order-by pipe (sorts data alphabetically, numerically, etc.) but
+      also
+      sorts objects and arrays of objects on any element, regardless of how deep the desired sort element is.
+    </p>
+  </div>
+
+  <h3>Sorting a numeric array</h3>
+  <div class="info-wrapper">
+
+    <div><code> <span class="ngb">data | rOrderBy </span> </code></div>
+    <br />
+
+    <div>(easy, schmeazy!) <img src="../../../assets/images/emoticon-smiley-regular.png" align="left"
+        class="emoticon" />
+    </div>
+    <br />
+  </div>
+
+
+  <div class="xs-only xxs-only contents-columns">
+    <div class="row">
+
+      <div class="col-md-4">
+        <!-- would-be header row -->
+      </div>
+
+      <div class="col xxs-repeater-row">
+
+        <div class="col-md-3 details-row">
+          <span class="vertical-header">Sample Array:&nbsp;&nbsp;</span>{{ testNumberArray | json }}
+        </div>
+        <div class="col-md-3 details-row">
+          <span class="vertical-header">Sorted Results:&nbsp;&nbsp;</span>{{ testNumberArray | rOrderBy | json }}
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <table
+    class="table table-bordered table-striped table-hover OrderBy-sample-results-table table-columns-divided xxs-gone xs-gone">
+    <thead>
+      <tr>
+        <td width="33%">
+          Sample Array
+        </td>
+        <td width="66%">
+          Sorted Results
+        </td>
+      </tr>
+    </thead>
+    <tr>
+      <td>
+        <span>
+          <pre>
+              {{ testNumberArray | json }}
+            </pre>
+        </span>
+      </td>
+      <td>
+        <div>
+          <pre>
+              {{ testNumberArray | rOrderBy | json }}
+          </pre>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="spacer-line-20"></div>
+
+
+  <h2>Sort an array of objects</h2>
+
+  <div class="info-wrapper">
+    <h3>
+      sorting by userId
+    </h3>
+    <code>
+      <span class="div-code"><span class="ngb"> *ngFor="let user of users | rOrderBy:'userId'" </span></span>
+  </code><br />
+  </div>
+
+
+  <div class="xxs-only xs-only contents-columns">
+    <div class="row">
+
+      <div class="col-md-4">
+
+        <!-- would-be header row -->
+
+      </div>
+    </div>
+
+    <div class="col-md-12 xxs-repeater-row" *ngFor="let user of sampleUsers">
+
+      <div class="col-md-1 details-row">
+        <span class="vertical-header">User ID:&nbsp;&nbsp;</span>{{user.userId}}
+      </div>
+      <div class="col-md-1 details-row">
+        <span class="vertical-header">first Name:&nbsp;&nbsp;</span>{{user.userInfo.firstName}}
+      </div>
+      <div class="col-md-2 details-row">
+        <span class="vertical-header">Last Name:&nbsp;&nbsp;</span> {{user.userInfo.lastName}}
+      </div>
+      <div class="col-md-2  details-row">
+        <span class="vertical-header">Date Hired:&nbsp;&nbsp;</span> {{user.userInfo.hireDate}}
+      </div>
+      <div class="col-md-2  details-row">
+        <span class="vertical-header">Department
+          Number:&nbsp;&nbsp;</span>{{user.userInfo.departmentInfo.departmentNumber}}
+      </div>
+      <div class="col-md-2  details-row">
+        <span class="vertical-header">Manager Last
+          Name:&nbsp;&nbsp;</span>{{user.userInfo.departmentInfo.departmentManager.lastName}}
+      </div>
+      <div class="col-md-2  details-row">
+        <span class="vertical-header">Manager First
+          Name:&nbsp;&nbsp;</span>{{user.userInfo.departmentInfo.departmentManager.firstName}}
+      </div>
+      <div class="col-md-2  details-row">
+        <span class="vertical-header">Data Usage:&nbsp;&nbsp;</span>{{user.bytesUsed | rmbgb }}
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+  <table class="xxs-gone table table-bordered table-striped table-hover OrderBy-sample-results-table table-fixed"
+    id="r-sample-results-table">
+    <thead id="OrderBy-sample-results-table-header" class="table-head-fixed">
+      <tr>
+        <td>
+          Employee #
+        </td>
+        <td>
+          First Name
+        </td>
+        <td>
+          Last Name
+        </td>
+        <td>
+          Date Hired
+        </td>
+        <td>
+          Dept. #
+        </td>
+        <td>
+          Manager Last Name
+        </td>
+        <td>
+          Manager First Name
+        </td>
+        <td>
+          Data Usage
+        </td>
+      </tr>
+    </thead>
+    <tbody id="OrderBy-sample-results-table-body" class=" table-body-fixed">
+      <tr *ngFor="let user of sampleUsers | rOrderBy:'userId'">
+        <td>
+          {{user.userId}}
+        </td>
+        <td>
+          {{user.userInfo.firstName}}
+        </td>
+        <td>
+          {{user.userInfo.lastName}}
+        </td>
+        <td>
+          {{user.userInfo.hireDate}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentNumber}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentManager.lastName}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentManager.firstName}}
+        </td>
+        <td>
+          {{user.bytesUsed | rmbgb }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="info-wrapper">
+
+    <h3>
+      sorting by Hire Date (two levels deep)
+    </h3>
+    <code>
+      <span class="div-code"><span class="ngb"> *ngFor="let user of users | rOrderBy:'userInfo.hireDate'"</span></span>
+  </code>
+  </div>
+
+  <table class="xxs-gone table table-bordered table-striped table-hover OrderBy-sample-results-table table-fixed"
+    id="r-sample-results-table">
+    <thead id="OrderBy-sample-results-table-header" class="table-head-fixed">
+      <tr>
+        <td>
+          Employee #
+        </td>
+        <td>
+          First Name
+        </td>
+        <td>
+          Last Name
+        </td>
+        <td>
+          Date Hired
+        </td>
+        <td>
+          Dept. #
+        </td>
+        <td>
+          Manager Last Name
+        </td>
+        <td>
+          Manager First Name
+        </td>
+        <td>
+          Data Usage
+        </td>
+      </tr>
+    </thead>
+    <tbody id="OrderBy-sample-results-table-body" class=" table-body-fixed">
+      <tr *ngFor="let user of sampleUsers | rOrderBy:'userInfo.lastName'">
+        <td>
+          {{user.userId}}
+        </td>
+        <td>
+          {{user.userInfo.firstName}}
+        </td>
+        <td>
+          {{user.userInfo.lastName}}
+        </td>
+        <td>
+          {{user.userInfo.hireDate}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentNumber}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentManager.lastName}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentManager.firstName}}
+        </td>
+        <td>
+          {{user.bytesUsed | rmbgb }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="info-wrapper">
+    <h3>
+      sorting by Manager First Name (Four levels deep)
+    </h3>
+    <code>
+  <span class="div-code">
+  <span class="ngb"> *ngFor="let user of users | rOrderBy:'userInfo.departmentInfo.departmentManager.firstName'"
+  </span>
+  </span>
+  </code>
+  </div>
+  <table class="xxs-gone table table-bordered table-striped table-hover OrderBy-sample-results-table table-fixed"
+    id="r-sample-results-table">
+    <thead id="OrderBy-sample-results-table-header" class="table-head-fixed">
+      <tr>
+        <td>
+          Employee #
+        </td>
+        <td>
+          First Name
+        </td>
+        <td>
+          Last Name
+        </td>
+        <td>
+          Date Hired
+        </td>
+        <td>
+          Dept. #
+        </td>
+        <td>
+          Manager Last Name
+        </td>
+        <td>
+          Manager First Name
+        </td>
+        <td>
+          Data Usage
+        </td>
+      </tr>
+    </thead>
+    <tbody id="OrderBy-sample-results-table-body" class=" table-body-fixed">
+      <tr *ngFor="let user of sampleUsers | rOrderBy:'userInfo.departmentInfo.departmentManager.firstName'">
+        <td>
+          {{user.userId}}
+        </td>
+        <td>
+          {{user.userInfo.firstName}}
+        </td>
+        <td>
+          {{user.userInfo.lastName}}
+        </td>
+        <td>
+          {{user.userInfo.hireDate}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentNumber}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentManager.lastName}}
+        </td>
+        <td>
+          {{user.userInfo.departmentInfo.departmentManager.firstName}}
+        </td>
+        <td>
+          {{user.bytesUsed | rmbgb }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
