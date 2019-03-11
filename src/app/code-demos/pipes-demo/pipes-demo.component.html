@@ -1,86 +1,23 @@
 <div class="top-spacer"></div>
+<div class="xxs-only xs-only contents-columns">
+  <div style="position: relative; width: 100%;">
+    <div
+      style="background-color: #214e5e;   color: #FFF;   font-size: 2em;   text-align: center;   top: 150px;   width: 80%;   margin-left: auto;   margin-right: auto;   position: relative;   border-radius: 4px;   padding: 25px;">
+      We will returned to our regularly scheduled mobile version by end of day.
+    </div>
+  </div>
+
+</div>
 
 
 <!-- TRYING TO FIND CLASSES FOR hidden-sm, hidden-md etc. (somewhere in bootstrap) -->
 
-<div class="page-wrapper sample-usage-container">
+<div class="page-wrapper sample-usage-container hidden-xxs hidden-xs">
 
   <h1 class="blue-headline">Angular Custom Pipes</h1>
   <h4>(Usage demos below)</h4>
   <div class="spacer-20 xxs-only xs-only"></div>
   <!-- xxs-only xs-only -->
-  <div class="xxs-only xs-only contents-columns">
-    <div class="row">
-
-      <div class="col-md-4">
-
-        <!-- <div class="xxs-gone row header-row">
-          <div class="col-md-2">
-            What it's called
-          </div>
-          <div class="col-md-10 details-row">
-            What it Does
-            <div class="col-md-1 details-row">
-              Repository
-            </div>
-            <div class="col-md-1 details-row">
-              Demo
-            </div>
-          </div>
-
-        </div> -->
-      </div>
-
-      <div class="col-md-4">
-
-        <div class="col-md-2 header-row-xxs">
-          rMbGb Pipe
-        </div>
-        <div class="col-md-10 details-row">
-          This is an extension of the native Angular decimal Pipe that converts numeric data from
-          raw number to usits of Bytes (Bytes, KB, MB, GB, TB, PB -- whatever is appropriate based on the number).
-        </div>
-        <div class="col-md-1 details-row">
-          <button class="btb btn-secondary"
-            (click)="openLink('https://github.com/robharrison-ad/ngx-ripes/blob/master/src/app/pipes/rmbgb-pipe.ts')">
-            Github Link
-          </button>
-        </div>
-        <div class="col-md-1 details-row">
-          <a [routerLink]="['/pipes']" fragment='rmbgb'><button class="btn btn-secondary">
-              Demo Link
-            </button></a>
-        </div>
-
-      </div>
-
-      <div class="col-md-4">
-
-        <div class="col-md-2 header-row-xxs">
-          rOrderBy Piipe
-        </div>
-        <div class="col-md-10 details-row">
-          Custom Angular pipe for sorting data - mostly usable in conjunction with <code>*ngFor</code> loops. Sorts
-          any part of an array, whether it's only a single layer deep (i.e., an array of strings or integers) or if
-          you need to sort an array of objects by a property that's multiple layers deep (i.e.,
-          student.class.school.district, if you were sorting a list of students by school district name.)
-        </div>
-        <div class="col-md-1 details-row">
-          <a href="https://github.com/robharrison-ad/ngx-ripes/blob/master/src/app/pipes/rOrderBy-pipe.ts"
-            target="_blank"><button class="btb btn-secondary">
-              Github Link
-            </button></a>
-        </div>
-        <div class="col-md-1 details-row">
-          <a [routerLink]="['/pipes']" fragment='rorderby'><button class="btn btn-secondary">
-              Demo Link
-            </button></a>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
 
   <div class="xxs-gone xs-gone contents-table">
     <table class="table table-responsive">
@@ -157,7 +94,7 @@
   <p>Easy as that!</p>
 
   <div class="xxs-only xs-only spacer-10"></div>
-  <div class="xxs-only xs-only contents-columns">
+  <!-- <div class="xxs-only xs-only contents-columns">
     <div class="row">
 
       <div class="col-md-4">
@@ -201,7 +138,7 @@
     </div>
 
   </div>
-
+ -->
   <table class="xxs-gone table table-bordered table-striped table-hover r-sample-results-table table-fixed "
     id="r-sample-results-table">
     <thead id="r-sample-results-table-header" class="table-head-fixed">
@@ -274,11 +211,10 @@
   </div>
 
 
-  <div class="xs-only xxs-only contents-columns">
+  <!-- <div class="xs-only xxs-only contents-columns">
     <div class="row">
 
       <div class="col-md-4">
-        <!-- would-be header row -->
       </div>
 
       <div class="col xxs-repeater-row">
@@ -295,7 +231,7 @@
 
     </div>
 
-  </div>
+  </div> -->
 
 
 
@@ -344,11 +280,10 @@
 
 
   <div class="xxs-only xs-only contents-columns">
-    <div class="row">
+    <!-- <div class="row">
 
       <div class="col-md-4">
 
-        <!-- would-be header row -->
 
       </div>
     </div>
@@ -383,7 +318,7 @@
         <span class="vertical-header">Data Usage:&nbsp;&nbsp;</span>{{user.bytesUsed | rmbgb }}
       </div>
 
-    </div>
+    </div> -->
 
 
   </div>
