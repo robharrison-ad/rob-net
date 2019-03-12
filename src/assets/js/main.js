@@ -125,7 +125,6 @@ jQuery(document).ready(function ($) {
         if (el && el[0]) {
             el = el[0];
         }
-        console.log(top);
         if (top > 5 && top < height) {
             var o = (maxO - (((top / height)) * maxO));
             o = (o < minO ? minO : o);

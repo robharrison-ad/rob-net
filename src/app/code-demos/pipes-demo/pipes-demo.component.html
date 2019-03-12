@@ -2,7 +2,7 @@
 
 
 <!-- TRYING TO FIND CLASSES FOR hidden-sm, hidden-md etc. (somewhere in bootstrap) -->
-
+<a class="back-link" [routerLink]="['/pipes']"><i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Back to Code page</a>
 <div class="page-wrapper sample-usage-container">
 
   <h1>Angular Custom Pipes</h1>
@@ -10,7 +10,7 @@
   <div class="spacer-20 xxs-only xs-only"></div>
   <!-- xxs-only xs-only -->
 
-  <div class="xxs-only xs-only contents-columns">
+  <div class="xxs-only xs-only contents-columns pipes-intro-section">
     <div class="table-block-container">
       <div class="spacer-5"></div>
       <div class="row">
@@ -35,16 +35,16 @@
             </button>
           </div>
           <div class="col-md-1 details-row">
-            <a [routerLink]="['/pipes']" fragment='rmbgb'><button class="btn btn-secondary">
+            <button (click)="scrollToEl('rmbgb')" class="btn btn-secondary">
                 Demo Link
-              </button></a>
+              </button>
           </div>
 
         </div>
 
         <div class="col-md-4">
 
-          <div class="col-md-2 header-row">
+          <div class="col-md-2 header-row-xxs">
             rOrderBy Pipe
           </div>
           <div class="col-md-10 details-row">
@@ -60,9 +60,9 @@
               </button></a>
           </div>
           <div class="col-md-1 details-row">
-            <a [routerLink]="['/pipes']" fragment='rorderby'><button class="btn btn-secondary">
-                Demo Link
-              </button></a>
+            <button (click)="scrollToEl('rorderby')" class="btn btn-secondary">
+              Demo Link
+            </button>
           </div>
 
         </div>
@@ -103,7 +103,7 @@
               target="_blank">Github Link</a>
           </td>
           <td>
-            <a [routerLink]="['/pipes']" fragment="rmbgb">Demo Link</a>
+            <a (click)="scrollToEl('rmbgb')">Demo Link</a>
           </td>
         </tr>
         <tr>
@@ -123,7 +123,7 @@
               target="_blank">Github Link</a>
           </td>
           <td>
-            <a [routerLink]="['/pipes']" fragment="rorderby">Demo Link</a>
+            <a (click)="scrollToEl('rorderby')">Demo Link</a>
           </td>
         </tr>
       </tbody>
@@ -135,7 +135,7 @@
 
 
 
-  <h2 id="rmbgb">rmbgb Pipe Usage and Example</h2>
+  <h2 id="rmbgb">rMbGb Pipe Usage and Example</h2>
   <div class="info-wrapper">
     <p>
       The table below shows various amounts of bytes, first unfiltered, then after the rMbGb pipe. The syntax for piping
@@ -144,6 +144,16 @@
     <code>
       <span class="div-code"> <span class="ngb"> dataUser.bytesUsed | rmbgb  </span> </span>
     </code>
+    <p>
+      There are two additional parameters available -- reverse and dateFlag, both are booleans. The full signature looks
+      like this: <br />
+      <code>rOrderBy(values: Array &lt;any&gt;, key: string, reverse: boolean, dateFlag: boolean)</code>.<br />
+      Here's an example of how it would look in the html template (assuming <code>myItems</code> is an array of objects
+      and <code>item.key.subkey</code> is a date value): <br />
+      <br />
+      <code>&lt;div *ngFor="let item of myItems | rOrderBy:'key.subkey', false, true" &gt;&lt;/div&gt;</code>
+      <br />
+    </p>
     <p>Easy as that!</p>
   </div>
 
@@ -192,26 +202,25 @@
     <div class="row-container header-row">
       <div class="cell header-cell md-gone sm-gone lg-gone xl-gone"></div>
       <div class="cell header-cell">Sample Array</div>
-        <div class="cell header-cell">Sorted Results</div>
-      </div>
-      <div class="row-container content-row">
-        <div class="cell"><label>Sample Array: </label>
-          <div class="cell-text">
-            <pre>[ {{ testNumberArray }} ]</pre>
-          </div>
-        </div>
-        <div class="cell"><label>Sorted Results: </label>
-
-          <pre>[ {{ testNumberArray | rOrderBy }} ]</pre>
-
+      <div class="cell header-cell">Sorted Results</div>
+    </div>
+    <div class="row-container content-row">
+      <div class="cell"><label>Sample Array: </label>
+        <div class="cell-text">
+          <pre>[ {{ testNumberArray }} ]</pre>
         </div>
       </div>
+      <div class="cell"><label>Sorted Results: </label>
+
+        <pre>[ {{ testNumberArray | rOrderBy }} ]</pre>
+
+      </div>
     </div>
-    <div class="spacer-10"></div>
-    <div>(easy, schmeazy!) <img src="../../../assets/images/emoticon-smiley-regular.png" align="left"
-        class="emoticon" />
-    </div>
-    <br />
+  </div>
+  <div class="spacer-10"></div>
+  <div>(easy, schmeazy!) <img src="../../../assets/images/emoticon-smiley-regular.png" align="left" class="emoticon" />
+  </div>
+  <br />
 
 
 
@@ -293,16 +302,16 @@
   <div class="table-block-container">
     <div class="row-container header-row xxs-gone xs-gone sm-gone">
       <div class="cell header-cell md-gone sm-gone lg-gone xl-gone"></div>
-      <div class="cell header-cell sort-property">User ID</div>
+      <div class="cell header-cell">User ID</div>
       <div class="cell header-cell">first Name</div>
       <div class="cell header-cell">Last Name</div>
-      <div class="cell header-cell">Date Hired</div>
+      <div class="cell header-cell sort-property">Date Hired</div>
       <div class="cell header-cell">Deparetment Number</div>
       <div class="cell header-cell">Manager Last Name:</div>
       <div class="cell header-cell">Manager First Name:</div>
       <div class="cell header-cell">Data Usage</div>
     </div>
-    <div class="row-container content-row" *ngFor="let user of sampleUsers | rOrderBy:'userInfo.hireDate'">
+    <div class="row-container content-row" *ngFor="let user of sampleUsers | rOrderBy:'userInfo.hireDate':false:true">
       <div class="cell"><label>User ID: </label>
         <div class="cell-text">{{ user.userId }}</div>
       </div>
@@ -331,70 +340,6 @@
   </div>
 
 
-
-
-
-  <!-- <table class="xxs-gone table table-bordered table-striped table-hover OrderBy-sample-results-table table-fixed"
-    id="r-sample-results-table">
-    <thead id="OrderBy-sample-results-table-header" class="table-head-fixed">
-      <tr>
-        <td>
-          Employee #
-        </td>
-        <td>
-          First Name
-        </td>
-        <td>
-          Last Name
-        </td>
-        <td>
-          Date Hired
-        </td>
-        <td>
-          Dept. #
-        </td>
-        <td>
-          Manager Last Name
-        </td>
-        <td>
-          Manager First Name
-        </td>
-        <td>
-          Data Usage
-        </td>
-      </tr>
-    </thead>
-    <tbody id="OrderBy-sample-results-table-body" class=" table-body-fixed">
-      <tr *ngFor="let user of sampleUsers | rOrderBy:'userInfo.lastName'">
-        <td>
-          {{user.userId}}
-        </td>
-        <td>
-          {{user.userInfo.firstName}}
-        </td>
-        <td>
-          {{user.userInfo.lastName}}
-        </td>
-        <td>
-          {{user.userInfo.hireDate}}
-        </td>
-        <td>
-          {{user.userInfo.departmentInfo.departmentNumber}}
-        </td>
-        <td>
-          {{user.userInfo.departmentInfo.departmentManager.lastName}}
-        </td>
-        <td>
-          {{user.userInfo.departmentInfo.departmentManager.firstName}}
-        </td>
-        <td>
-          {{user.bytesUsed | rmbgb }}
-        </td>
-      </tr>
-    </tbody>
-  </table> -->
-
-
   <div class="info-wrapper">
     <h3>
       sorting by Manager First Name (Four levels deep)
@@ -406,65 +351,52 @@
   </span>
   </code>
   </div>
-  <!-- <table class="xxs-gone table table-bordered table-striped table-hover OrderBy-sample-results-table table-fixed"
-    id="r-sample-results-table">
-    <thead id="OrderBy-sample-results-table-header" class="table-head-fixed">
-      <tr>
-        <td>
-          Employee #
-        </td>
-        <td>
-          First Name
-        </td>
-        <td>
-          Last Name
-        </td>
-        <td>
-          Date Hired
-        </td>
-        <td>
-          Dept. #
-        </td>
-        <td>
-          Manager Last Name
-        </td>
-        <td>
-          Manager First Name
-        </td>
-        <td>
-          Data Usage
-        </td>
-      </tr>
-    </thead>
-    <tbody id="OrderBy-sample-results-table-body" class=" table-body-fixed">
-      <tr *ngFor="let user of sampleUsers | rOrderBy:'userInfo.departmentInfo.departmentManager.firstName'">
-        <td>
-          {{user.userId}}
-        </td>
-        <td>
-          {{user.userInfo.firstName}}
-        </td>
-        <td>
-          {{user.userInfo.lastName}}
-        </td>
-        <td>
-          {{user.userInfo.hireDate}}
-        </td>
-        <td>
-          {{user.userInfo.departmentInfo.departmentNumber}}
-        </td>
-        <td>
-          {{user.userInfo.departmentInfo.departmentManager.lastName}}
-        </td>
-        <td>
-          {{user.userInfo.departmentInfo.departmentManager.firstName}}
-        </td>
-        <td>
-          {{user.bytesUsed | rmbgb }}
-        </td>
-      </tr>
-    </tbody>
-  </table> -->
+
+
+  <div class="table-block-container">
+    <div class="row-container header-row xxs-gone xs-gone sm-gone">
+      <div class="cell header-cell md-gone sm-gone lg-gone xl-gone"></div>
+      <div class="cell header-cell">User ID</div>
+      <div class="cell header-cell">first Name</div>
+      <div class="cell header-cell">Last Name</div>
+      <div class="cell header-cell">Date Hired</div>
+      <div class="cell header-cell">Deparetment Number</div>
+      <div class="cell header-cell">Manager Last Name</div>
+      <div class="cell header-cell sort-property">Manager First Name</div>
+      <div class="cell header-cell">Data Usage</div>
+    </div>
+    <div class="row-container content-row"
+      *ngFor="let user of sampleUsers | rOrderBy:'userInfo.departmentInfo.departmentManager.firstName'">
+      <div class="cell"><label>User ID: </label>
+        <div class="cell-text">{{ user.userId }}</div>
+      </div>
+      <div class="cell"><label>First Name: </label>
+        <div class="cell-text">{{ user.userInfo.firstName }}</div>
+      </div>
+      <div class="cell"><label>Last Name: </label>
+        <div class="cell-text">{{ user.userInfo.lastName }}</div>
+      </div>
+      <div class="cell"><label>Date Hired: </label>
+        <div class="cell-text">{{user.userInfo.hireDate}}</div>
+      </div>
+      <div class="cell"><label>Department Number: </label>
+        <div class="cell-text">{{user.userInfo.departmentInfo.departmentNumber}}</div>
+      </div>
+      <div class="cell"><label>Manager Last Name: </label>
+        <div class="cell-text">{{user.userInfo.departmentInfo.departmentManager.lastName}}</div>
+      </div>
+      <div class="cell sort-property"><label>Manager First Name: </label>
+        <div class="cell-text">{{user.userInfo.departmentInfo.departmentManager.firstName}}</div>
+      </div>
+      <div class="cell"><label>Data Usage: </label>
+        <div class="cell-text">{{ user.bytesUsed | rmbgb }}</div>
+      </div>
+    </div>
+  </div>
+
+
+
+
 
 
 </div>

@@ -129,9 +129,9 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
   ];
   navigateByUrl: Function;
   tb1Titles: Array<string> = [
-    'User ID', 
-    'Name', 
-    'Bytes Used (raw)', 
+    'User ID',
+    'Name',
+    'Bytes Used (raw)',
     'Bytes Used (with MbGb Pipe)'
   ]
 
@@ -165,9 +165,6 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
     // this.globalFunctions.scrollToTop(100, 0, 0);
     this.navigateTo = this.globalFunctions.navigateTo;
     this.navigateByUrl = this.globalFunctions.navigateByUrl;
-    window.addEventListener('scroll', () => {
-      this.location.replaceState("/pipes");
-    });
   }
 
   navigateTo(params) {
@@ -180,6 +177,19 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
+  }
+
+  scrollToEl(el: Element | string) {
+    if (typeof (el) == "string") {
+      el = document.getElementById(el);
+    }
+    if (el) {
+      el.scrollIntoView({
+        block: "start",
+        inline: "nearest",
+        behavior: "smooth"
+      });
+    }
   }
 
 
