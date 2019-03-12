@@ -19,7 +19,6 @@ import { ROrderByPipe } from './shared/rOrderBy-pipe';
 import { RMbGbPipe } from './shared/rmbgb-pipe';
 import { CodeDemosComponent } from './code-demos/code-demos.component';
 import { CcRewardsComponent } from './code-demos/cc-rewards/cc-rewards.component';
-import { CodeHighlightService } from './shared/code-highlight.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,6 @@ import { CodeHighlightService } from './shared/code-highlight.service';
   providers: [
     GlobalDataService,
     GlobalFunctionsService,
-    CodeHighlightService
   ],
   bootstrap: [AppComponent]
 })

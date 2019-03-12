@@ -1,8 +1,6 @@
 import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
-import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { GlobalFunctionsService } from '../../shared/global-functions.service';
-import { CodeHighlightService } from '../../shared/code-highlight.service';
 
 @Component({
   selector: 'app-pipes-demo',
@@ -135,14 +133,11 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
     'Bytes Used (raw)',
     'Bytes Used (with MbGb Pipe)'
   ]
-  prism: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private globalFunctions: GlobalFunctionsService,
-    private location: Location,
-    @Inject(CodeHighlightService) private readonly codeHighlilghter: CodeHighlightService
   ) {
     router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
@@ -161,17 +156,10 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-
-   
-
   ngOnInit() {
     this.route.fragment.subscribe(fragment => { this.fragment = fragment });
-    // this.globalFunctions.scrollToTop(100, 0, 0);
     this.navigateTo = this.globalFunctions.navigateTo;
     this.navigateByUrl = this.globalFunctions.navigateByUrl;
-    
-
   }
 
   navigateTo(params) {
@@ -183,7 +171,7 @@ export class PipesDemoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.codeHighlilghter.highlightAll();
+
   }
 
   scrollToEl(el: Element | string) {
