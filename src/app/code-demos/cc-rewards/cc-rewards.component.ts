@@ -28,7 +28,7 @@ export class CcRewardsComponent implements OnInit, AfterViewInit {
           this.video.requestFullscreen().then(d => {
             console.log(d);
           }).catch(e => {
-            console.log(e);
+            console.error(e);
           });
         }
       };
