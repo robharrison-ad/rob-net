@@ -23,12 +23,13 @@ code {
   }
 }
 
-p {
-  code {
-    padding: 2px;
-    font-size: 90%;
-    border-radius: 3px;
-  }
+
+code {
+  padding: 2px;
+  font-size: 90%;
+  border-radius: 3px;
+  background-color: rgba(211, 211, 211, 0.39);
+  color: #730000;
 }
 
 /* FLEX */
@@ -172,7 +173,6 @@ p {
     &.fifth {
       width: 20%;
     }
-   
   }
   .details-row {
     font-family: 'latoregular';
