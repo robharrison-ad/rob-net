@@ -233,6 +233,7 @@
 
 .angle-bracketed-content::before {
   content: "<";
+  margin-left: -4px;
 }
 
 .angle-bracketed-content.closing::before {
@@ -257,6 +258,7 @@
 
 .angle-bracketed-content.hover-braces:hover::before {
   content: "{{ ";
+    margin-left: 0px;
 }
 
 .themed {

@@ -12,7 +12,7 @@ import { filter } from "rxjs/operators";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'rob-net';
   scrollTop: number = 0;
 
@@ -34,19 +34,13 @@ export class AppComponent implements OnInit {
   ) {
     router.events
       .pipe(
-        // The "events" stream contains all the navigation events. For this demo,
-        // though, we only care about the NavigationStart event as it contains
-        // information about what initiated the navigation sequence.
         filter(
           (event: NavigationEvent) => {
-
             return (event instanceof NavigationStart);
-
           }
         )
       ).subscribe(
         (event: NavigationStart) => {
-
           this.globalFunctions.setIntroClasses();
         }
       )
@@ -54,35 +48,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     AOS.init(this.aosConfig);
-
-    if (window.scrollY > 10) {
-      this.globalFunctions.scrollToTop(2500, 0, 0);
-    }
     this.globalFunctions.setIntroClasses(200);
-    // window.addEventListener('scroll', (e) => {
-    //   this.globalFunctions.onScroll(e);
-    //   this.scrollTop = window.scrollY;
-    // });
   }
 
-  // onScroll(e: Event) {
-  //   this.scrollTop = window.scrollY;
-  // }
+  ngAfterViewInit() {
+    this.globalFunctions.scrollToTop(500, 0, 0);
+  }
 
-  // backClick() {
-  //   this.globalFunctions.scrollToTop(0, 0, 0);
-  //   setTimeout(() => {
-  //     let e = new Event('scroll');
-  //     window.dispatchEvent(e);
-  //   }, 750);
-  // }
-
-  // ngAfterViewInit() {
-  //   setTimeout(() => {
-  //     console.log('fire!');
-  //     window.dispatchEvent(new Event('scroll'));
-  //   }, 1500);
-  // }
 
 
 }
