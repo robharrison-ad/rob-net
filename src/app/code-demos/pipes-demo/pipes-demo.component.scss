@@ -29,7 +29,7 @@ code {
   font-size: 90%;
   border-radius: 3px;
   background-color: rgba(211, 211, 211, 0.39);
-  color: #730000;
+  color: $bb-accent-dark;
 }
 
 /* FLEX */
@@ -144,7 +144,7 @@ code {
       width: 225px;
       padding-right: 40px;
       float: left;
-      color: blue;
+      color: $bb-primary-dark3;
       float: left;
       font-weight: bold;
       font-family: 'latobold';
@@ -159,9 +159,9 @@ code {
       }
     }
     &.sort-property {
-      color: #b90000;
+      color: $bb-accent-light2;
       label {
-        color: #b90000;
+        color: $bb-accent-light2;
       }
     }
     &.quarter {
