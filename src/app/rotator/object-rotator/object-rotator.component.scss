@@ -1,0 +1,172 @@
+.or-container-relative {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+}
+
+.color-temp {
+  border: 1px solid red;
+}
+
+.rotator-container {
+  position: fixed;
+  transition-property: top left;
+  transition-duration: 1000ms;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.rotator-object {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+}
+
+
+.r-container-1 {
+  top: 10px;
+  left: 15vw;
+}
+
+
+.r-object-1 {
+  background-size: 50px 50px;
+  background-image: url(../../../assets/images/internet-icons/html5.png);
+}
+
+
+.r-container-2 {
+  top: 10px;
+  left: 25vw;
+  &.r-rest {
+    top: 5px;
+    left: 50px;
+  }
+}
+
+.r-object-2 {
+  background-image: url(../../../assets/images/internet-icons/angular-logo-only.png);
+  background-size: 70px 65px;
+}
+
+.r-container-3 {
+  top: 10px;
+  left: 35vw;
+  &.r-rest {
+    left: 90px;
+  }
+}
+
+.r-object-3 {
+  background-image: url(../../../assets/images/internet-icons/bootstrap.png);
+  background-size: 60px 65px;
+}
+
+.r-container-4 {
+  top: 10px;
+  left: 45vw;
+  &.r-rest {
+    left: 130px;
+  }
+}
+
+.r-object-4 {
+  background-image: url(../../../assets/images/internet-icons/javascript.png);
+  background-size: 60px 50px;
+}
+
+.r-container-5 {
+  top: 10px;
+  left: 55vw;
+  &.r-rest {
+    left: 170px;
+  }
+}
+
+.r-object-5 {
+  background-image: url(../../../assets/images/internet-icons/css3.png);
+  background-size: 60px 60px;
+}
+
+.r-container-6 {
+  top: 10px;
+  left: 65vw;
+  &.r-rest {
+    left: 210px;
+  }
+}
+
+.r-object-6 {
+  background-image: url(../../../assets/images/internet-icons/node-js.png);
+  background-size: 75px 65px;
+}
+
+.r-container-7 {
+  top: 10px;
+  left: 75vw;
+}
+.r-object-7 {
+  background-image: url(../../../assets/images/internet-icons/react.png);
+  background-size: 75px 75px;
+}
+
+.r-container-8 {
+  top: 10px;
+  left: 200vw;
+}
+.r-object-8 {
+  background-image: url(../../../assets/images/internet-icons/sql.png);
+  background-size: 75px 75px;
+}
+
+.r-container-9 {
+  position: absolute;
+  top: -500px;
+  left: 200vw;
+}
+.r-object-9 {
+  background-image: url(../../../assets/images/internet-icons/jquery.png);
+  background-size: 60px 60px;
+}
+
+.r-container-10 {
+  position: absolute;
+  top: -500px;
+  left: -100vw;
+}
+
+.r-object-10 {
+  background-image: url(../../../assets/images/internet-icons/net-logo.png);
+  background-size: 60px 60px;
+}
+
+.r-container-11 {
+  position: absolute;
+  top: 10px;
+  left: -100vw;
+}
+
+.r-object-11 {
+  background-image: url(../../../assets/images/internet-icons/c-sharp2.png);
+  background-size: 45px 60px;
+}
+
+// rest class
+.r-rest {
+  transition-property: transform top left;
+  transform: scale(0.25, 0.25);
+  top: 5px !important;
+}
+
+// end class
+.r-end {
+  transition-property: top left;
+  transition-duration: 1000ms;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  top: -500000px !important;
+  left: 75vw !important;
+}

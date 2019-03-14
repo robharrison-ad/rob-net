@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject, OnChanges, OnDestroy } from '@angular/core';
 import { GlobalDataService } from '../shared/global-data.service';
 import { GlobalFunctionsService } from '../shared/global-functions.service';
-import { DOCUMENT, NgForOf } from "@angular/common";
+import { DOCUMENT } from "@angular/common";
+
 
 @Component({
   selector: 'app-home',

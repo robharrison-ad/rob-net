@@ -19,6 +19,8 @@ import { ROrderByPipe } from './shared/rOrderBy-pipe';
 import { RMbGbPipe } from './shared/rmbgb-pipe';
 import { CodeDemosComponent } from './code-demos/code-demos.component';
 import { CcRewardsComponent } from './code-demos/cc-rewards/cc-rewards.component';
+import { ObjectRotatorComponent } from './rotator/object-rotator/object-rotator.component';
+import { RotatorTemplateComponent } from './rotator/rotator-template/rotator-template.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { CcRewardsComponent } from './code-demos/cc-rewards/cc-rewards.component
     ROrderByPipe,
     CodeDemosComponent,
     CcRewardsComponent,
+    ObjectRotatorComponent,
+    RotatorTemplateComponent
   ],
 
   imports: [
