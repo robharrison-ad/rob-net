@@ -1,9 +1,10 @@
 import {
   Component, OnInit, Renderer2, ElementRef, Input, OnChanges, SimpleChange, HostListener, AfterViewInit,
-  ComponentFactory, NgModule, Type, Compiler, ViewChild, ViewContainerRef, ComponentRef
+  Compiler, ViewChild, ViewContainerRef, ComponentRef
 } from '@angular/core';
 import { GlobalFunctionsService } from '../../shared/global-functions.service';
 import { RotatorTemplateComponent } from '../rotator-template/rotator-template.component';
+import { ROrderByPipe } from '../../shared/rOrderBy-pipe';
 
 @Component({
   selector: 'object-rotator',
@@ -25,6 +26,7 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
   restTimer: any;
   unrestTimer: any;
   endTimer: any;
+  usePaths: boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onresize(event) {
@@ -45,13 +47,17 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
     private r: Renderer2,
     private e: ElementRef,
     private globalFunmctions: GlobalFunctionsService,
-    private compiler: Compiler
+    private compiler: Compiler,
   ) {
     this.rend = r;
     this.el = e;
   }
 
   ngOnInit() {
+    if (this.rConfig.classPaths) {
+      this.usePaths = true;
+    }
+    this.setDebugTimer();
   }
 
   ngAfterViewInit() {
@@ -103,32 +109,72 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
   }
 
   rotateClasses(classIn: string = "") {
-    for (let i = 0; i < this.rConfig.numberOfObjects; i++) {
-      let classNum: number;
-      const objectNum = i + 1;
-      const el = document.getElementById('r-' + objectNum.toString());
-      const currentClassAttribute = el.getAttribute('data-num');
-      if (currentClassAttribute) {
-        classNum = Number.parseInt(currentClassAttribute);
-      }
-      const pClass = this.rConfig.positionClassPrefix;
-      let nextClass: number;
-      if (!classIn) {
-        nextClass = (classNum + 1 <= this.rConfig.numberOfObjects) ? classNum + 1 : 1;
-        el.setAttribute('data-num', nextClass.toString());
-        this.globalFunmctions.swapClass('r-' + objectNum, pClass + '-' + nextClass.toString(), pClass + '-' + classNum);
-        // console.log('r-' + objectNum, pClass + '-' + nextClass.toString(), pClass + '-' + classNum);
-      }
-      else {
-        const o = {
-          k: el.attributes['id'].value,
-          v: pClass + '-' + classNum
-        };
-        this.saveClasses.push(o);
-        this.globalFunmctions.swapClass('r-' + objectNum, classIn, pClass + '-' + classNum);
-        // console.log(objectNum, classIn, pClass + '-' + classNum);
+    if (this.usePaths) {
+      this.rotateClasses2();
+    }
+    else {
+      for (let i = 0; i < this.rConfig.numberOfObjects; i++) {
+        let classNum: number;
+        const objectNum = i + 1;
+        const el = document.getElementById('r-' + objectNum.toString());
+        const currentClassAttribute = el.getAttribute('data-num');
+        if (currentClassAttribute) {
+          classNum = Number.parseInt(currentClassAttribute);
+        }
+        const pClass = this.rConfig.positionClassPrefix;
+        let nextClass: number;
+        if (!classIn) {
+          nextClass = (classNum + 1 <= this.rConfig.numberOfObjects) ? classNum + 1 : 1;
+          el.setAttribute('data-num', nextClass.toString());
+          this.globalFunmctions.swapClass('r-' + objectNum, pClass + '-' + nextClass.toString(), pClass + '-' + classNum);
+          // console.log('r-' + objectNum, pClass + '-' + nextClass.toString(), pClass + '-' + classNum);
+        }
+        else {
+          const o = {
+            k: el.attributes['id'].value,
+            v: pClass + '-' + classNum
+          };
+          this.saveClasses.push(o);
+          this.globalFunmctions.swapClass('r-' + objectNum, classIn, pClass + '-' + classNum);
+          // console.log(objectNum, classIn, pClass + '-' + classNum);
+        }
       }
     }
+  }
+
+  rotateClasses2(classIn: string = "") {
+    if (!this.usePaths) {
+      this.rotateClasses(classIn);
+    }
+    else {
+      const rorderby = new ROrderByPipe();
+      const rotatePaths = rorderby.transform(this.rConfig.classPaths, 'step');
+
+      for (let i = 0; i < rotatePaths.length; i++) {
+        const path = this.rConfig.classPaths[i];
+        for (let p = 0; p < path.moves.length; p++) {
+          // get from/to info to be applied against each object to see if it has the class we're looking for
+          const from = path.moves[p].from;
+          const to = path.moves[p].to;
+          for (let c = 0; c < this.rConfig.numberOfObjects; c++) {
+            const objNum = c + 1;
+            // look at each element in the list of rotator templates and see if it has the "from" class we're looking for.
+            // if so, we swap from/to
+            const el = document.getElementById('r-' + objNum.toString());
+            if (el) {
+              if (el.classList.contains(from)) {
+                // console.log('rtotator2: ', 'r-' + objNum.toString(), to, from);
+                this.globalFunmctions.swapClass('r-' + objNum.toString(), to, from);
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+
+
   }
 
   setRestClass(remove: boolean = false) {
@@ -253,14 +299,14 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
     }
   }
 
-  // debugTimer: any;
-  // setDebugTimer() {
-  //   this.debugTimer = setTimeout(() => {
-  //     console.log('moveTimer', this.moveTimer, 'restTime', this.restTime, 'runTimeElapsed', this.runTimeElapsed, 'endTimer', this.endTimer, 'escapeHatch', this.escapeHatch);
-  //     clearTimeout(this.debugTimer);
-  //     this.setDebugTimer();
-  //   }, 1000);
-  // }
+  debugTimer: any;
+  setDebugTimer() {
+    this.debugTimer = setTimeout(() => {
+      console.log('moveTimer', this.moveTimer, 'restTimer', this.restTimer, 'restTime', this.restTime, 'runTimeElapsed', this.runTimeElapsed, 'endTimer', this.endTimer, 'escapeHatch', this.escapeHatch);
+      clearTimeout(this.debugTimer);
+      this.setDebugTimer();
+    }, 1000);
+  }
 
 }
 
@@ -271,37 +317,107 @@ export class kvp {
 
 
 export class RConfig {
-  numberOfObjects: number = 11;
+  numberOfObjects: number = 12;
   positionClassPrefix: string = "r-container";
   objectClassPrefix: string = "r-object"
   positionChangeDuration: number = 2500; //ms
   positionPauseLength: number = 4; // seconds
-  positionClassOrder: [1, 2, 7, 6, 3, 5, 6];
   runTime?: number = 900; // seconds
   endPositionClass?: string = "r-end";
-  restInterval?: 0; // number = 90; // seconds - minimum 5
-  restDuration?: number = 30; // seconds
+  restInterval?: number = 90; // seconds - minimum 5
+  restDuration?: number = 45; // seconds
   restPositionClass?: string = "r-rest";
-  // classPaths: {
-  //   step: 0, 
-  //   moves: [
-  //     {
-  //       from: 0, to: 
-  //     }
-  //     }
-  //   ]
-  // }
-  
+  classPaths: Array<any> = [
+    {
+      step: 1,
+      moves: [
+        { from: 'r-container-1', to: 'r-container-2' },
+        { from: 'r-container-12', to: 'r-container-11' }
+      ]
+    },
+    {
+      step: 2,
+      moves: [
+        { from: 'r-container-2', to: 'r-container-3' },
+        { from: 'r-container-11', to: 'r-container-10' }
+      ]
+    },
+    {
+      step: 3,
+      moves: [
+        { from: 'r-container-3', to: 'r-container-4' },
+        { from: 'r-container-10', to: 'r-container-9' }
+      ]
+    },
+    {
+      step: 4,
+      moves: [
+        { from: 'r-container-4', to: 'r-container-5' },
+        { from: 'r-container-9', to: 'r-container-8' }
+      ]
+    },
+    {
+      step: 5,
+      moves: [
+        { from: 'r-container-5', to: 'r-container-6' },
+        { from: 'r-container-8', to: 'r-container-7' },
+      ]
+    },
+    {
+      step: 6,
+      moves: [
+        { from: 'r-container-6', to: 'r-container-1' },
+        { from: 'r-container-7', to: 'r-container-12' }
+      ]
+    },
+    // {
+    //   step: 6,
+    //   moves: [
+    //     { from: 'r-container-10', to: 'r-container-11' },
+    //     { from: 'r-container-12', to: 'r-container-1' }
+    //   ]
+    // },
+    // {
+    //   step: 6,
+    //   moves: [
+    //   ]
+    // },
+    // {
+    //   step: 6,
+    //   moves: [
+    //   ]
+    // },
+    // {
+    //   step: 6,
+    //   moves: [
+    //   ]
+    // },
+    // {
+    //   step: 6,
+    //   moves: [
+    //   ]
+    // },
+    // {
+    //   step: 6,
+    //   moves: [
+    //   ]
+    // },
+
+  ]
+
+
+
   constructor(private rConfig?: RConfig) {
     if (rConfig) {
       const keys = Object.keys(rConfig);
       for (let i = 0; i < keys.length; i++) {
         const inKey = keys[i];
         if (this.hasOwnProperty(inKey)) {
-          this[inKey] = rConfig[inKey]; 
+          this[inKey] = rConfig[inKey];
         }
       }
 
     }
   }
+
 }

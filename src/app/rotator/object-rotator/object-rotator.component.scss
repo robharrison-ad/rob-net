@@ -14,7 +14,7 @@
 .rotator-container {
   position: fixed;
   transition-property: top left;
-  transition-duration: 1000ms;
+  transition-duration: 2500ms;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -29,9 +29,12 @@
 
 .r-container-1 {
   top: 10px;
-  left: 15vw;
+  left: 20vw;
+  &.r-rest {
+    left: 16vw;
+  }
+  
 }
-
 
 .r-object-1 {
   background-size: 50px 50px;
@@ -41,10 +44,10 @@
 
 .r-container-2 {
   top: 10px;
-  left: 25vw;
+  left: 30vw;
   &.r-rest {
     top: 5px;
-    left: 50px;
+    left: 21.33vw;
   }
 }
 
@@ -55,9 +58,9 @@
 
 .r-container-3 {
   top: 10px;
-  left: 35vw;
+  left: 40vw;
   &.r-rest {
-    left: 90px;
+    left: 26.66vw;
   }
 }
 
@@ -67,10 +70,11 @@
 }
 
 .r-container-4 {
-  top: 10px;
-  left: 45vw;
+  top: 150vh;
+  left: 10vw;
+  transition-duration: 5s !important;
   &.r-rest {
-    left: 130px;
+    left: 32vw;
   }
 }
 
@@ -80,10 +84,10 @@
 }
 
 .r-container-5 {
-  top: 10px;
-  left: 55vw;
+  top: 200vh;
+  left: -100vw;
   &.r-rest {
-    left: 170px;
+    left: 37.33vw;
   }
 }
 
@@ -94,9 +98,9 @@
 
 .r-container-6 {
   top: 10px;
-  left: 65vw;
+  left: -100vw;
   &.r-rest {
-    left: 210px;
+    left: 42.66vw;
   }
 }
 
@@ -107,7 +111,10 @@
 
 .r-container-7 {
   top: 10px;
-  left: 75vw;
+  left: 200vw;
+  &.r-rest { 
+    left: 48vw;
+  }
 }
 .r-object-7 {
   background-image: url(../../../assets/images/internet-icons/react.png);
@@ -115,42 +122,68 @@
 }
 
 .r-container-8 {
-  top: 10px;
+  top: 200vh;
   left: 200vw;
+  &.r-rest {
+    left: 53.33vw;
+  }
 }
+
 .r-object-8 {
-  background-image: url(../../../assets/images/internet-icons/sql.png);
+  background-image: url(../../../assets/images/internet-icons/visual-studio.png);
   background-size: 75px 75px;
 }
 
 .r-container-9 {
-  position: absolute;
-  top: -500px;
-  left: 200vw;
+  top: 150vh;
+  left: 90vw;
+  transition-duration: 5s;
+  &.r-rest {
+    left: 58.66vw;
+  }
 }
 .r-object-9 {
-  background-image: url(../../../assets/images/internet-icons/jquery.png);
-  background-size: 60px 60px;
+  background-image: url(../../../assets/images/internet-icons/sql.png);
+  background-size: 75px 75px;
 }
 
 .r-container-10 {
   position: absolute;
-  top: -500px;
-  left: -100vw;
+  top: 10px;
+  left: 50vw;
+  &.r-rest {
+    left: 64vw;
+  }
 }
-
 .r-object-10 {
-  background-image: url(../../../assets/images/internet-icons/net-logo.png);
+  background-image: url(../../../assets/images/internet-icons/jquery.png);
   background-size: 60px 60px;
 }
 
 .r-container-11 {
   position: absolute;
   top: 10px;
-  left: -100vw;
+  left: 60vw;
+  &.r-rest {
+    left: 69.33vw;
+  }
 }
 
 .r-object-11 {
+  background-image: url(../../../assets/images/internet-icons/net-logo.png);
+  background-size: 60px 60px;
+}
+
+.r-container-12 {
+  position: absolute;
+  top: 10px;
+  left: 70vw;
+  &.r-rest {
+    left: 74.66vw;
+  }
+}
+
+.r-object-12 {
   background-image: url(../../../assets/images/internet-icons/c-sharp2.png);
   background-size: 45px 60px;
 }
@@ -158,7 +191,7 @@
 // rest class
 .r-rest {
   transition-property: transform top left;
-  transform: scale(0.25, 0.25);
+  transform: scale(0.7, 0.7);
   top: 5px !important;
 }
 
