@@ -162,8 +162,9 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
   }
 
   setRestTimer() {
-    // console.log('rest');
-    if (!this.rConfig.restInterval) {
+    if (!this.rConfig.restInterval) { return; }
+    if (this.rConfig.restInterval < 5) {
+      console.warn('Invalid rest interval (' + this.rConfig.restInterval + ').  Must be 5 or greater.  Rest interval ignored.');
       return;
     }
     const restInterval = this.rConfig.restInterval * 1000;
@@ -275,12 +276,22 @@ export class RConfig {
   objectClassPrefix: string = "r-object"
   positionChangeDuration: number = 2500; //ms
   positionPauseLength: number = 4; // seconds
+  positionClassOrder: [1, 2, 7, 6, 3, 5, 6];
   runTime?: number = 900; // seconds
   endPositionClass?: string = "r-end";
-  restInterval?: number = 90; // seconds
+  restInterval?: 0; // number = 90; // seconds - minimum 5
   restDuration?: number = 30; // seconds
   restPositionClass?: string = "r-rest";
-
+  // classPaths: {
+  //   step: 0, 
+  //   moves: [
+  //     {
+  //       from: 0, to: 
+  //     }
+  //     }
+  //   ]
+  // }
+  
   constructor(private rConfig?: RConfig) {
     if (rConfig) {
       const keys = Object.keys(rConfig);
