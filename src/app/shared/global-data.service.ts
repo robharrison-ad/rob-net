@@ -17,7 +17,7 @@ export class GlobalDataService {
     about: 'rh-background-2',
     resume: 'rh-background-2',
     code: 'rh-background-3',
-    pipes: 'rh-background-3', 
+    pipes: 'rh-background-3',
     'cc-rewards': 'rh-background-3'
   };
 
@@ -30,9 +30,6 @@ export class GlobalDataService {
   introBgClass = '';
   nonIntroBgClass = '';
 
-  watchOnScroll = [
-
-  ];
 
   backgroundManagerStyle = {
     'position': 'fixed',
@@ -47,7 +44,11 @@ export class GlobalDataService {
     'background-repeat': 'no-repeat',
     'z-index': '-1',
     'background-size': 'cover'
-    }
+  }
+
+  get debug(): boolean {
+    return window.location.hostname === 'localhost';
+  }
 
   get currentPage(): string {
     return this._currentPage;

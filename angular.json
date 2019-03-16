@@ -51,6 +51,7 @@
               "src/styles.scss"
             ],
             "scripts": [
+              "./src/assets/js/main.js",
               "./node_modules/prismjs/prism.js"
             ]
           },

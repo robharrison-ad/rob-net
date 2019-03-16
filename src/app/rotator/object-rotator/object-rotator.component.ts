@@ -5,6 +5,7 @@ import {
 import { GlobalFunctionsService } from '../../shared/global-functions.service';
 import { RotatorTemplateComponent } from '../rotator-template/rotator-template.component';
 import { ROrderByPipe } from '../../shared/rOrderBy-pipe';
+import { GlobalDataService } from '../../shared/global-data.service';
 
 @Component({
   selector: 'object-rotator',
@@ -36,6 +37,10 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
   onorientationchange(event) {
     this.onResize();
   }
+  @HostListener('window:scroll', ['$event'])
+  scroll(event) {
+    this.onScroll();
+  }
 
   // objectTemplate: string = '<div style="color: blue, font-size: 20px"> ** This is the template ** </div>';
 
@@ -48,6 +53,7 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
     private e: ElementRef,
     private globalFunmctions: GlobalFunctionsService,
     private compiler: Compiler,
+    private globalData: GlobalDataService
   ) {
     this.rend = r;
     this.el = e;
@@ -57,7 +63,7 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
     if (this.rConfig.classPaths) {
       this.usePaths = true;
     }
-    this.setDebugTimer();
+    if (this.globalData.debug) { this.setDebugTimer(); }
   }
 
   ngAfterViewInit() {
@@ -69,7 +75,18 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
   }
 
   onResize() {
+  }
 
+  onScroll() {
+    const scrollTop = window.scrollY;
+    if (scrollTop > this.rConfig.scrollInvokePositionY) {
+      // this.setClassById('objectRotator', this.rConfig.scrollInvokeClass, false);
+      this.setScrollClass();
+    }
+    else {
+      // this.setClassById('objectRotator', this.rConfig.scrollInvokeClass, true);
+      this.setScrollClass(true);
+    }
   }
 
   initialize() {
@@ -177,6 +194,20 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
 
   }
 
+  setClassById(elementId: string, className: string, remove: boolean = false) {
+    if (elementId) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        if (remove) {
+          el.classList.remove(className);
+        }
+        else {
+          el.classList.add(className);
+        }
+      }
+    }
+  }
+
   setRestClass(remove: boolean = false) {
     for (let i = 0; i < this.rConfig.numberOfObjects; i++) {
       const idNum = i + 1;
@@ -202,6 +233,21 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
         }
         else {
           el.classList.add(this.rConfig.endPositionClass);
+        }
+      }
+    }
+  }
+
+  setScrollClass(remove: boolean = false) {
+    for (let i = 0; i < this.rConfig.numberOfObjects; i++) {
+      const idNum = i + 1;
+      const el = document.getElementById('r-' + idNum.toString());
+      if (el) {
+        if (!remove) {
+          el.classList.add(this.rConfig.scrollInvokeClass);
+        }
+        else {
+          el.classList.remove(this.rConfig.scrollInvokeClass);
         }
       }
     }
@@ -255,7 +301,7 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
       console.log('end');
       let id = Number.parseInt(setTimeout(() => { }, 0).toString());
       while (id-- > 0) {
-        if (id != this.endTimer) {
+        if (id !== this.endTimer) {
           clearTimeout(id);
         }
       }
@@ -325,8 +371,11 @@ export class RConfig {
   runTime?: number = 900; // seconds
   endPositionClass?: string = "r-end";
   restInterval?: number = 90; // seconds - minimum 5
-  restDuration?: number = 45; // seconds
+  restDuration?: number = 90; // seconds
   restPositionClass?: string = "r-rest";
+  scrollInvokePositionY: number = 300;
+  scrollInvokeClass: string = 'r-scroll';
+  scrollClassElementId: string = '';
   classPaths: Array<any> = [
     {
       step: 1,

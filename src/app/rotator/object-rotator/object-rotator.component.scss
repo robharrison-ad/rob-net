@@ -1,3 +1,4 @@
+@import '../../variables';
 .or-container-relative {
   position: relative;
   top: 0px;
@@ -16,6 +17,12 @@
   transition-property: top left;
   transition-duration: 2500ms;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  @media(max-width: 991px) {
+    transform: scale(0.75);
+  }
+  &.r-rest {
+    top: $rest-top !important;
+  }
 }
 
 .rotator-object {
@@ -26,14 +33,15 @@
   height: 100px;
 }
 
-
 .r-container-1 {
-  top: 10px;
+  top: 0px;
   left: 20vw;
   &.r-rest {
-    left: 16vw;
+    left: $rest-left-01;
   }
-  
+  @media(max-width: 991px) {
+    opacity: 0.5;
+  }
 }
 
 .r-object-1 {
@@ -41,13 +49,11 @@
   background-image: url(../../../assets/images/internet-icons/html5.png);
 }
 
-
 .r-container-2 {
-  top: 10px;
+  top: 0px;
   left: 30vw;
   &.r-rest {
-    top: 5px;
-    left: 21.33vw;
+    left: $rest-left-02;
   }
 }
 
@@ -57,10 +63,10 @@
 }
 
 .r-container-3 {
-  top: 10px;
+  top: 0px;
   left: 40vw;
   &.r-rest {
-    left: 26.66vw;
+    left: $rest-left-03;
   }
 }
 
@@ -74,7 +80,7 @@
   left: 10vw;
   transition-duration: 5s !important;
   &.r-rest {
-    left: 32vw;
+    left: $rest-left-04;
   }
 }
 
@@ -87,7 +93,7 @@
   top: 200vh;
   left: -100vw;
   &.r-rest {
-    left: 37.33vw;
+    left: $rest-left-05;
   }
 }
 
@@ -97,41 +103,42 @@
 }
 
 .r-container-6 {
-  top: 10px;
+  top: 0px;
   left: -100vw;
   &.r-rest {
-    left: 42.66vw;
+    left: $rest-left-06;
   }
 }
 
 .r-object-6 {
   background-image: url(../../../assets/images/internet-icons/node-js.png);
-  background-size: 75px 65px;
+  background-size: 90px 54px;
 }
 
 .r-container-7 {
-  top: 10px;
+  top: 0px;
   left: 200vw;
-  &.r-rest { 
-    left: 48vw;
+  &.r-rest {
+    left: $rest-left-07;
   }
 }
+
 .r-object-7 {
   background-image: url(../../../assets/images/internet-icons/react.png);
-  background-size: 75px 75px;
+  background-size: 60px 60px;
 }
 
 .r-container-8 {
   top: 200vh;
   left: 200vw;
   &.r-rest {
-    left: 53.33vw;
+    left: $rest-left-08;
   }
 }
 
 .r-object-8 {
   background-image: url(../../../assets/images/internet-icons/visual-studio.png);
-  background-size: 75px 75px;
+  background-size: 60px 60px;
 }
 
 .r-container-9 {
@@ -139,33 +146,33 @@
   left: 90vw;
   transition-duration: 5s;
   &.r-rest {
-    left: 58.66vw;
+    left: $rest-left-09;
   }
 }
+
 .r-object-9 {
   background-image: url(../../../assets/images/internet-icons/sql.png);
   background-size: 75px 75px;
 }
 
 .r-container-10 {
-  position: absolute;
-  top: 10px;
+  top: 0px;
   left: 50vw;
   &.r-rest {
-    left: 64vw;
+    left: $rest-left-10;
   }
 }
+
 .r-object-10 {
   background-image: url(../../../assets/images/internet-icons/jquery.png);
-  background-size: 60px 60px;
+  background-size: 57px 60px;
 }
 
 .r-container-11 {
-  position: absolute;
-  top: 10px;
+  top: 0px;
   left: 60vw;
   &.r-rest {
-    left: 69.33vw;
+    left: $rest-left-11;
   }
 }
 
@@ -175,17 +182,19 @@
 }
 
 .r-container-12 {
-  position: absolute;
-  top: 10px;
+  top: 0px;
   left: 70vw;
   &.r-rest {
-    left: 74.66vw;
+    left: $rest-left-12;
+  }
+  @media(max-width: 991px) {
+    opacity: 0.5;
   }
 }
 
 .r-object-12 {
   background-image: url(../../../assets/images/internet-icons/c-sharp2.png);
-  background-size: 45px 60px;
+  background-size: 37.5px 50px;
 }
 
 // rest class
@@ -193,6 +202,16 @@
   transition-property: transform top left;
   transform: scale(0.7, 0.7);
   top: 5px !important;
+  @media(max-width: 991px) {
+    transform: scale(0.5);
+  }
+}
+
+.r-scroll {
+  transition-property: opacity;
+  transition-delay: 750ms;
+  transition-duration: 1500ms;
+  opacity: 0;
 }
 
 // end class

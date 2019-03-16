@@ -1,5 +1,13 @@
 "use strict";
 jQuery(document).ready(function ($) {
+    window.debug = window.location.hostname === 'localhost';
+    const highResBodyFontSize = '20px';
+    const standardBodyFontSize = '15px';
+    let screenSizeInfo = {
+        x: 0,
+        y: 0
+    }
+    adjustForResolution();
 
     // var el = jQuery('.navbar-fixed-top');
     // if (el && el[0]) {
@@ -36,9 +44,19 @@ jQuery(document).ready(function ($) {
         var regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
         return c.match(regex);
     }
+
+    function getFineTime() {
+        const now = new Date();
+        const m = now.getMinutes();
+        const s = now.getSeconds();
+        const ms = now.getMilliseconds();
+        return m.toString() + ':' + s.toString() + ':' + ms.toString();
+    }
+
     $(window).load(function () {
         $(".loaded").fadeOut();
         $(".preloader").delay(1000).fadeOut("slow");
+        if (window.debug) { console.log('window.load', '@: ', getFineTime()); }
     });
     /*---------------------------------------------*
      * Mobile menu
@@ -61,60 +79,45 @@ jQuery(document).ready(function ($) {
 
 
 
-    /*---------------------------------------------*
-     * STICKY scroll
-     ---------------------------------------------*/
-
-    $.localScroll();
-
-
-
-    /*---------------------------------------------*
-     * Counter 
-     ---------------------------------------------*/
-
-    //    $('.statistic-counter').counterUp({
-    //        delay: 10,
-    //        time: 2000
-    //    });
-
-    //    $('.statistic').counterUp({
-    //        delay: 10,
-    //        time: 2000
-    //   });
-
-
-
-
-    /*---------------------------------------------*
-     * WOW
-     ---------------------------------------------*/
-
-    var wow = new WOW({
-        mobile: false // trigger animations on mobile devices (default is true)
-    });
-    wow.init();
-
 
     /* ---------------------------------------------------------------------
-     Carousel
+     For very high screen resolutions
      ---------------------------------------------------------------------= */
 
-    $('.main_comments_content').owlCarousel({
-        responsiveClass: true,
-        autoplay: false,
-        items: 1,
-        loop: true,
-        dots: true,
-        nav: false,
-        navText: [
-            "<i class='lnr lnr-chevron-left'></i>",
-            "<i class='lnr lnr-chevron-right'></i>"
-        ],
-        autoplayHoverPause: true
-
+    jQuery(window).resize(function () {
+        adjustForResolution();
+    });
+    jQuery(window).hover(function () {
+        adjustForResolution();
     });
 
+    function adjustForResolution() {
+        const x = window.screen.availWidth;
+        const y = window.screen.availHeight;
+        if (!(x !== screenSizeInfo.x || y !== screenSizeInfo.y)) {
+            console.log('return');
+            return;
+        }
+        console.log('no return');
+        screenSizeInfo = {
+            x: x,
+            y: y
+        }
+        if (window.debug) {
+            console.log('x: ', x, 'y: ', y, '@: ', getFineTime());
+        }
+        const b = document.querySelector('body');
+        if (x > 3500 && y > 1900) {
+            b.style.fontSize = highResBodyFontSize;
+        }
+        else {
+            b.style.fontSize = standardBodyFontSize;
+        }
+    }
+
+    /* ---------------------------------------------------------------------
+     Menu fade
+     ---------------------------------------------------------------------= */
 
     jQuery(window).scroll(function () {
         var top = jQuery(document).scrollTop();
