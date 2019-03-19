@@ -175,6 +175,15 @@
   background-color: $bb-primary-light;
 }
 
+.menu-social-links {
+  float: left;
+  .linkedin-menu-link {
+    margin-top: 10px;
+    margin-left: 5px;
+    box-shadow: 1px 1px 0px rgb(30, 129, 179);
+  }
+}
+
 
 /******************************************************************************
  ******************************************************************************

@@ -95,7 +95,7 @@ jQuery(document).ready(function ($) {
         const x = window.screen.availWidth;
         const y = window.screen.availHeight;
         if (!(x !== screenSizeInfo.x || y !== screenSizeInfo.y)) {
-            console.log('return');
+            if (window.debug) { console.log('return'); }
             return;
         }
         console.log('no return');

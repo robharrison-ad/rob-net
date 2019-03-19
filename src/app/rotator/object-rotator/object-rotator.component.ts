@@ -419,38 +419,6 @@ export class RConfig {
         { from: 'r-container-7', to: 'r-container-12' }
       ]
     },
-    // {
-    //   step: 6,
-    //   moves: [
-    //     { from: 'r-container-10', to: 'r-container-11' },
-    //     { from: 'r-container-12', to: 'r-container-1' }
-    //   ]
-    // },
-    // {
-    //   step: 6,
-    //   moves: [
-    //   ]
-    // },
-    // {
-    //   step: 6,
-    //   moves: [
-    //   ]
-    // },
-    // {
-    //   step: 6,
-    //   moves: [
-    //   ]
-    // },
-    // {
-    //   step: 6,
-    //   moves: [
-    //   ]
-    // },
-    // {
-    //   step: 6,
-    //   moves: [
-    //   ]
-    // },
 
   ]
 

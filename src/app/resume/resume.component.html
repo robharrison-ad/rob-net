@@ -6,12 +6,12 @@
             <div id="zoomBtnHolder" class="zoom-button-container ">
                 <button id="btnZoomDown" class="zoom-button zoomOut" (click)="zoomUp(false)"
                     [disabled]="(zoomLevel <= 0.25)">
-                    <i class="fa fa-minus"></i>
+                    <i class="glyphicon glyphicon-zoom-out"></i>
                 </button>
                 <div class="zoom-button-container-text">Zoom:
                     {{zoomLevel | number:'1.0-1'}}</div>
                 <button id="btnZoomUp" class="zoom-button zoomIn" (click)="zoomUp(true)" [disabled]="(zoomLevel >= 3)">
-                    <i class="fa fa-plus"></i>
+                    <i class="glyphicon glyphicon-zoom-in"></i>
                 </button>
             </div>
 
@@ -20,9 +20,9 @@
                 <table>
                     <tr>
                         <td>
-                            <button id="btnVertZoomDown" class="zoom-button zoom-out" (click)="zoomUp(false)"
-                                [disabled]="(zoomLevel <= 0.25)">
-                                <i class="fa fa-minus"></i>
+                            <button id="btnVertZoomUp" class="zoom-button zoom-in" (click)="zoomUp(true)"
+                                [disabled]="(zoomLevel >= 3)">
+                                <i class="glyphicon glyphicon-zoom-in"></i>
                             </button>
                         </td>
                     </tr>
@@ -34,9 +34,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <button id="btnVertZoomUp" class="zoom-button zoom-in" (click)="zoomUp(true)"
-                                [disabled]="(zoomLevel >= 3)">
-                                <i class="fa fa-plus"></i>
+                            <button id="btnVertZoomDown" class="zoom-button zoom-out" (click)="zoomUp(false)"
+                                [disabled]="(zoomLevel <= 0.25)">
+                                <i class="glyphicon glyphicon-zoom-out"></i>
                             </button>
                         </td>
                     </tr>
@@ -46,9 +46,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td tooltip="Go to top" placement="right"> 
+                        <td tooltip="Go to top" placement="right">
                             <button id="btnGoUp" class="zoom-button go-up" (click)="goUp()">
-                                <i class="fa fa-arrow-up"></i>
+                                <i class="glyphicon glyphicon-arrow-up"></i>
                             </button>
                         </td>
                     </tr>
