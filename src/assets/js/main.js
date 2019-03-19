@@ -98,7 +98,7 @@ jQuery(document).ready(function ($) {
             if (window.debug) { console.log('return'); }
             return;
         }
-        console.log('no return');
+        if (window.debug) { console.log('no return'); }
         screenSizeInfo = {
             x: x,
             y: y
