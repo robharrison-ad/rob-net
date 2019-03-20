@@ -18,11 +18,12 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
   @Input('r-config') rConfig: RConfig = new RConfig();
   @Input('r-template') templateParam: string;
 
-  native: Element;
+  // native: Element;
   saveClasses: Array<kvp> = new Array<kvp>();
   moveTimer: any;
   escapeHatch: boolean = false;
   runTimeElapsed: boolean = false;
+  runTimeElapsedAt: Date;
   restTime: boolean = false;
   restTimer: any;
   unrestTimer: any;
@@ -41,6 +42,10 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
   scroll(event) {
     this.onScroll();
   }
+  // @HostListener('window:hover', ['$event'])
+  // hover(event) {
+  //   this.onHover();
+  // }
 
   // objectTemplate: string = '<div style="color: blue, font-size: 20px"> ** This is the template ** </div>';
 
@@ -89,6 +94,14 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
     }
   }
 
+  // onHover() {
+  //   if (this.runTimeElapsed) {
+  //     const d = new Date();
+  //     const dd = new Date(this.runTimeElapsedAt.getMilliseconds() + (this.rConfig.runTime * 1000));
+  //     console.log(d, dd);
+  //   }
+  // }
+
   initialize() {
     if (!(this.el && this.el.nativeElement)) {
       return;
@@ -120,6 +133,10 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
       this.rend.appendChild(template, div);
       this.rend.appendChild(n, template);
     }
+    this.kickStartAll();
+  }
+
+  kickStartAll() {
     this.setMoveTimer();
     this.setRestTimer();
     this.setEndTimer();
@@ -309,7 +326,13 @@ export class ObjectRotatorComponent implements OnInit, OnChanges, AfterViewInit 
       clearTimeout(this.restTimer);
       clearTimeout(this.endTimer);
       this.setEndClass();
+      this.setEndTimeElapsed();
     }, runtime);
+  }
+
+  setEndTimeElapsed() {
+    this.runTimeElapsed = true;
+    // this.runTimeElapsedAt = new Date();
   }
 
   kickMoveCycle() {
