@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, OnChanges, OnDestroy, ViewChild } from '@angular/core';
 import { GlobalDataService } from '../shared/global-data.service';
 import { GlobalFunctionsService } from '../shared/global-functions.service';
 import { DOCUMENT } from "@angular/common";
@@ -10,6 +10,8 @@ import { DOCUMENT } from "@angular/common";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  @ViewChild('disclaimerModal') disclaimerModal:ElementRef;
+
   templateItems: Array<any>;
   backgroundImagePath: any;
   pipes: any;
@@ -71,6 +73,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onScrollAndResize() {
 
+  }
+
+  disclaimerLinkClick() {
+    const modal = document.getElementById('disclaimerModal');
+    if (modal) {
+      this.disclaimerModal.modal('toggle');
+    }
   }
 
 
