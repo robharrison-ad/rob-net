@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnChanges, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, OnChanges, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { GlobalDataService } from '../shared/global-data.service';
 import { GlobalFunctionsService } from '../shared/global-functions.service';
 import { DOCUMENT } from "@angular/common";
@@ -75,12 +75,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
-  disclaimerLinkClick() {
-    const modal = document.getElementById('disclaimerModal');
-    if (modal) {
-      this.disclaimerModal.modal('toggle');
-    }
-  }
+  // disclaimerLinkClick() {
+  //   const modal = document.getElementById('disclaimerModal');
+  //   if (modal) {
+  //     this.disclaimerModal.modal('toggle');
+  //   }
+  // }
 
 
   initItems() {
